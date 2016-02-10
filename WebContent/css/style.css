@@ -1,0 +1,32 @@
+.header
+{
+	background-image			: url(../img/header.jpg);
+	background-repeat			  : no-repeat;
+	height						: 200px;
+	width 						: 100%;
+	margin-bottom : 100px;
+}
+
+.marginHeader
+{
+	margin-left 				: 4%;
+	padding-top 				: 30px;
+	width 						: 92%;
+	position					: fixed;
+	z-index						: 9999;
+    height						: 100px; 
+}
+
+.buttonHeader a
+{
+	text-decoration				: none;
+	color 						: black;
+}
+
+.footer {
+    background-image			: url(../img/header.jpg);
+	height						: 40px;
+	width 						: 100%;
+	position					: absolute;
+	bottom 						: 0;
+}
