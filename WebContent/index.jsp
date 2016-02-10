@@ -8,7 +8,7 @@
 <meta http-equiv="refresh" content="0;URL=javascript:fermer();">
 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-<script src="lib/jquery/jquery-1.11.2.min.js"></script>
+<script src="lib/jquery/jquery-2.2.0.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 <title>Expo : Médiathèque De Polyteck</title>
 </head>
@@ -24,6 +24,7 @@
 	<div class="header">
 		<div class="marginHeader">
 			<div class="row">
+			
 				<div class="buttonHeader col-xs-3 col-sm-2 col-md-2 col-xs-offset-2 col-sm-offset-5 col-md-offset-5">
 					<p><a href="Controleur?action=ajouterAdherent">Ajout Adhérent</a></p>
 				</div>
