@@ -4,39 +4,49 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
 <script src="lib/jquery/jquery-1.11.2.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-<title>Ajouter un  adhérent</title>
+<title>Ajouter un adhérent</title>
 </head>
 <script language="Javascript" type="text/javascript"></script>
 <script type="text/javascript" src="js/foncControle.js"></script>
 
 
 <body>
-	<H1> Ajout d'un adhérent </H1> 
+	<h1 align="center">Ajout d'un adhérent</h1>
 
-<DIV align="center">
-<FORM  name='identification' method="post" action="Controleur?action=insererAdherent" onsubmit="return teste()">
-     <P align="left"><FONT face="Arial" color="#004080"></FONT>     
-		<FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Nom de l'adherent : </FONT>
-	    <INPUT type="text" name="txtnom" value=""  id ="nom"> <BR>
-        <FONT face="Arial" color="#004080">
-		<BR>Prenom de l'adherent : </FONT>
-        <INPUT type="text" name="txtprenom"  id ="prenom"  > <BR>
-        
-        <FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Ville de l'adherent :</FONT>
-        <INPUT type="text" name="txtville" id ="ville">
-        <FONT face="Arial" color="#004080">	<BR></FONT><BR>
-        
-          <!-- Boutons Ajouter -->
-          
-        <INPUT type="submit" name="bt"  value="Ajouter" >
-        <FONT face="Arial" color="#004080"></FONT>
-        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      
-</P></FORM>
-</DIV>
-<BR>
+	<form class="form-horizontal" method="post"
+		action="Controleur?action=insererAdherent" onsubmit="return teste()">
+		<div class="form-group">
+			<label for="nomAdherent" class="col-sm-2 control-label">Nom</label>
+			<div class="col-sm-3">
+				<input type="text" name="txtnom" class="form-control"
+					id="nomAdherent" placeholder="Nom">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="prenomAdherent" class="col-sm-2 control-label">Prénom</label>
+			<div class="col-sm-3">
+				<input type="text" name="txtprenom" class="form-control"
+					id="prenomAdherent" placeholder="Prénom">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="villeAdherent" class="col-sm-2 control-label">Ville</label>
+			<div class="col-sm-3">
+				<input type="text" name="txtville" class="form-control"
+					id="villeAdherent" placeholder="Ville">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<a type="button" name="btAnnuler" class="btn btn-danger" href="index.jsp">Annuler</a>
+				<button type="submit" name="bt" class="btn btn-primary">Ajouter</button>
+			</div>
+		</div>
+	</form>
+
 </body>
 </html>
