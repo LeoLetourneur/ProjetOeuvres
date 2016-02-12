@@ -1,15 +1,16 @@
 $(window).scroll(function (event) {
     var scroll = $(window).scrollTop()
     
+    console.log("chhhh");
     //BACKGROUND
-    if(scroll > 100) {
+    if(scroll > 150) {
     	$('.marginHeader').css("background-color", "white");
     } else {
     	$('.marginHeader').css("background-color", "transparent");
     }
     
     //BORDER
-    if(scroll > 0) {
+    if(scroll > 50) {
     	$('.marginHeader').css("border-bottom", "1px solid black");
     } else {
     	$('.marginHeader').css("border-bottom", "none");

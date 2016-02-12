@@ -1,12 +1,18 @@
-.header
-{
-	height						: 100px;
-	width 						: 100%;
-	
+@CHARSET "UTF-8";
+
+html, body {
+	height						: 90%;	/*A voir sur un vrai explorateur, surement 100% pour le footer*/
 }
 
-.header::after {
-	height						: 100px;
+#header
+{
+	height						: 150px;
+	width 						: 100%;
+}
+
+/*after pour avoir un background-image avec opacité 0.5*/
+#header::after {
+	height						: 150px;
   	content						: "";
   	background-image			: url(../img/header.jpg);
 	background-repeat			: no-repeat;
@@ -21,6 +27,7 @@
   	border-bottom-right-radius 	: 10px;
 }
 
+/*barre de menu blanche qui scroll*/
 .marginHeader
 {
 	margin-left 				: 4%;
@@ -32,12 +39,7 @@
 }
 
 svg {
-  position: absolute;
-  width: 200px;
-  height: 100px;
-  top: 0;
-  right : 0;
-  margin: auto;
+  margin-top 					: -20px;
 }
 
 .buttonHeader a
@@ -47,29 +49,30 @@ svg {
 	font-weight					: bold; 
 }
 
-.body 
+#body 
 {
-	margin-top : 100px;
-	margin-bottom : 100px;
+	width 						: 92%;
+	margin-left 				: 4%;
+	margin-top 					: 100px;
+	margin-bottom 				: 50px;
+	min-height 					: calc( 100% - 190px );
 }
 
-.nosFaces {
-	height : 200px;
-	widht : 80%;
-	margin : auto;
-	text-align : center;
-	margin-top : 100px;
-}
-
-.footer {
+#footer {
 	background-image			: url(../img/header.jpg);
 	background-repeat			: no-repeat;
 	opacity						: 0.5;
 	height						: 40px;
 	width 						: 100%;
-	position					: absolute;
-	bottom						: 0;
-	left 						: 0;
 	border-top-left-radius 		: 10px;
   	border-top-right-radius 	: 10px;
+}
+
+/*css de l'index*/
+.nosFaces {
+	height 						: 200px;
+	widht 						: 80%;
+	margin 						: auto;
+	text-align 					: center;
+	margin-top 					: 100px;
 }

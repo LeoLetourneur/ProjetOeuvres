@@ -59,8 +59,12 @@ public class Controleur extends HttpServlet {
 			throws ServletException, IOException {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
+		
 		// execute l'action
 		if (LISTER_RADHERENT.equals(actionName)) {
+			request.setAttribute("tabTitle", "Liste des adhérents");
+			request.setAttribute("module", "listerAdherent");
+			
 			try {
 
 				Service unService = new Service();
@@ -74,9 +78,11 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/listerAdherent.jsp";
 		}
 		else if (AJOUTER_ADHERENT.equals(actionName)) {
-
+			request.setAttribute("tabTitle", "Nouvel adhérent");
+			request.setAttribute("module", "ajouterAdherent");
 			destinationPage = "/ajouterAdherent.jsp";
-		} else if (INSERER_ADHERENT.equals(actionName)) {
+		} 
+		else if (INSERER_ADHERENT.equals(actionName)) {
 			try {
 				Adherent unAdherent = new Adherent();
 				unAdherent.setNomAdherent(request.getParameter("txtnom"));
@@ -89,17 +95,18 @@ public class Controleur extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			request.setAttribute("tabTitle", "Accueil");
+			request.setAttribute("module", "index");
 			destinationPage = "/index.jsp";
 		}
-
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
 			request.setAttribute(ERROR_KEY, messageErreur);
 		}
+		
 		// Redirection vers la page jsp appropriee
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
 		dispatcher.forward(request, response);
 
 	}
-
 }
