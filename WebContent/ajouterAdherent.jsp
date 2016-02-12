@@ -4,34 +4,37 @@
 <t:layout>
     <jsp:body>
 		
-		<h1 align="center">Ajout d'un adhérent</h1>
-	
+		<h1 align="center">${action} un adhérent</h1>
+		
 		<form class="form-horizontal" method="post" action="Controleur?action=insererAdherent" onsubmit="return checkFields()">
+			
+			<input type="hidden" name="idAdherent" class="form-control" id="idAdherent" value="${adherent.idAdherent}">
+			
 			<div class="form-group">
 				<label for="nomAdherent" class="col-sm-2 control-label">Nom</label>
 				<div class="col-sm-3">
 					<input type="text" name="txtnom" class="form-control"
-						id="nomAdherent" placeholder="Nom">
+						id="nomAdherent" placeholder="Nom" value="${adherent.nomAdherent}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="prenomAdherent" class="col-sm-2 control-label">Prénom</label>
 				<div class="col-sm-3">
 					<input type="text" name="txtprenom" class="form-control"
-						id="prenomAdherent" placeholder="Prénom">
+						id="prenomAdherent" placeholder="Prénom" value="${adherent.prenomAdherent}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="villeAdherent" class="col-sm-2 control-label">Ville</label>
 				<div class="col-sm-3">
 					<input type="text" name="txtville" class="form-control"
-						id="villeAdherent" placeholder="Ville">
+						id="villeAdherent" placeholder="Ville" value="${adherent.villeAdherent}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<a type="button" name="btAnnuler" class="btn btn-danger" href="index.jsp">Annuler</a>
-					<button type="submit" name="bt" class="btn btn-primary">Ajouter</button>
+					<a type="button" name="btAnnuler" class="btn btn-danger" href="Controleur?action=listerAdherent">Annuler</a>
+					<button type="submit" name="bt" class="btn btn-primary">${action}</button>
 				</div>
 			</div>
 		</form>

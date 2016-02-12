@@ -23,6 +23,8 @@ public class Controleur extends HttpServlet {
 	private static final String ACTION_TYPE = "action";
 	private static final String LISTER_RADHERENT = "listerAdherent";
 	private static final String AJOUTER_ADHERENT = "ajouterAdherent";
+	private static final String MODIFIER_ADHERENT = "modifierAdherent";
+	private static final String SUPPRIMER_ADHERENT = "supprimerAdherent";
 	private static final String INSERER_ADHERENT = "insererAdherent";
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
@@ -63,7 +65,7 @@ public class Controleur extends HttpServlet {
 		// execute l'action
 		if (LISTER_RADHERENT.equals(actionName)) {
 			request.setAttribute("tabTitle", "Liste des adhérents");
-			request.setAttribute("module", "listerAdherent");
+			request.setAttribute("module", "LISTER_RADHERENT");
 			
 			try {
 
@@ -79,25 +81,67 @@ public class Controleur extends HttpServlet {
 		}
 		else if (AJOUTER_ADHERENT.equals(actionName)) {
 			request.setAttribute("tabTitle", "Nouvel adhérent");
-			request.setAttribute("module", "ajouterAdherent");
+			request.setAttribute("module", AJOUTER_ADHERENT);
+			destinationPage = "/ajouterAdherent.jsp";
+		} 
+		else if (MODIFIER_ADHERENT.equals(actionName)) {
+			
+			try {
+				Service unService = new Service();
+				Adherent adherentAModifier = unService.consulterAdherent(Integer.parseInt(request.getParameter("idAdherent")));
+				request.setAttribute("adherent", adherentAModifier);
+			} catch (MonException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("tabTitle", "Actualisation adhérent");
+			request.setAttribute("module", MODIFIER_ADHERENT);
+			request.setAttribute("action", "Modifier");
 			destinationPage = "/ajouterAdherent.jsp";
 		} 
 		else if (INSERER_ADHERENT.equals(actionName)) {
 			try {
-				Adherent unAdherent = new Adherent();
-				unAdherent.setNomAdherent(request.getParameter("txtnom"));
-				unAdherent.setPrenomAdherent(request.getParameter("txtprenom"));
-				unAdherent.setVilleAdherent(request.getParameter("txtville"));
 				Service unService = new Service();
-				unService.insertAdherent(unAdherent);
+				int id = Integer.parseInt(request.getParameter("idAdherent"));
+				Adherent adherent;
+				
+				if(id > 0) {
+					adherent = unService.consulterAdherent(id);
+				} else {
+					adherent = new Adherent();
+				}
+				adherent.setNomAdherent(request.getParameter("txtnom"));
+				adherent.setPrenomAdherent(request.getParameter("txtprenom"));
+				adherent.setVilleAdherent(request.getParameter("txtville"));
+				
+				if(id > 0) {
+					unService.updateAdherent(adherent);
+				} else {
+					unService.insertAdherent(adherent);
+				}
 
 			} catch (MonException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Accueil");
-			request.setAttribute("module", "index");
-			destinationPage = "/index.jsp";
+			request.setAttribute("tabTitle", "Liste des adhérents");
+			request.setAttribute("module", "LISTER_RADHERENT");
+			request.setAttribute("action", "Ajouter");
+			destinationPage = "/Controleur?action=listerAdherent";
+		}
+		else if (SUPPRIMER_ADHERENT.equals(actionName)) {
+			try {
+				Service unService = new Service();
+				int id = Integer.parseInt(request.getParameter("idAdherent"));
+				boolean success = unService.deleteAdherent(id);
+
+			} catch (MonException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("tabTitle", "Liste des adhérents");
+			request.setAttribute("module", "LISTER_RADHERENT");
+			destinationPage = "/Controleur?action=listerAdherent";
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";

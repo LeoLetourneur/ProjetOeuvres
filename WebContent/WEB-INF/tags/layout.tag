@@ -76,10 +76,7 @@
 					</div>
 					
 					<div class="buttonHeader col-xs-3 col-sm-2 col-md-2">
-						<p><a href="Controleur?action=ajouterAdherent">Ajout un adhérent</a></p>
-					</div>
-					<div class="buttonHeader col-xs-3 col-sm-2 col-md-2">
-						<p><a href="Controleur?action=listerAdherent">Liste des adhérents</a></p>
+						<p><a href="Controleur?action=listerAdherent">Adhérents</a></p>
 					</div>
 				</div>
 			</div>

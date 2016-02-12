@@ -6,9 +6,13 @@
 <t:layout>
     <jsp:body>
 		
-		<p>
-			<a type="button" name="btnReturn" class="btn btn-warning" href="index.jsp">Retour accueil</a>
-		</p>
+		<div>
+			<a type="button" class="btn btn-warning" href="index.jsp">Retour accueil</a>
+			<a type="button" class="btn btn-success" href="Controleur?action=ajouterAdherent">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout un adhérent
+			</a>
+		</div>
+		
 		<p align="center">
 			Listing des adhérents
 		</p>
@@ -29,8 +33,8 @@
 					<td>${item.prenomAdherent}</td>
 	                <td>${item.villeAdherent}</td>
 	                <td>
-	                	<a type="button" class="btn btn-primary" data-id="${item.idAdherent}" href="#">Modifier</a>
-	                	<a type="button" class="btn btn-danger" data-id="${item.idAdherent}" href="#">Supprimer</a>
+	                	<a type="button" class="btn btn-primary" href="Controleur?action=modifierAdherent&idAdherent=${item.idAdherent}">Modifier</a>
+	                	<a type="button" class="btn btn-danger" href="Controleur?action=supprimerAdherent&idAdherent=${item.idAdherent}">Supprimer</a>
                 	</td>
 				</tr>
 			</c:forEach>
