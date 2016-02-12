@@ -6,7 +6,7 @@
 		
 		<h1 align="center">Ajout d'un adhérent</h1>
 	
-		<form class="form-horizontal" method="post" action="Controleur?action=insererAdherent" onsubmit="checkFields()">
+		<form class="form-horizontal" method="post" action="Controleur?action=insererAdherent" onsubmit="return checkFields()">
 			<div class="form-group">
 				<label for="nomAdherent" class="col-sm-2 control-label">Nom</label>
 				<div class="col-sm-3">

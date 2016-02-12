@@ -1,7 +1,6 @@
 $(window).scroll(function (event) {
     var scroll = $(window).scrollTop()
     
-    console.log("chhhh");
     //BACKGROUND
     if(scroll > 150) {
     	$('.marginHeader').css("background-color", "white");

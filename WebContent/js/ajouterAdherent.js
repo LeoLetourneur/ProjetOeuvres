@@ -1,15 +1,15 @@
 function checkFields()
 {
 	var ok = true;
-	if(document.identification.nom.value == "") {
+	if($("#nomAdherent").val() == "") {
+		ok = false;
 		alert("Veuillez entrer votre nom");
-        ok = false;
-	} else if(document.identification.prenom.value == "") {
+	} else if($("#prenomAdherent").val() == "") {
+		ok = false;
 		alert("Veuillez entrer votre prenom");
+	} else if($("#villeAdherent").val() == "") {
 		ok = false;
-	} else if(document.identification.ville.value == "") {
 		alert("Veuillez entrer la ville");
-		ok = false;
 	}
 
 	return ok;
