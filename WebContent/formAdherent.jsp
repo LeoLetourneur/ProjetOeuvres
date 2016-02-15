@@ -33,7 +33,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<a type="button" name="btAnnuler" class="btn btn-danger" href="Controleur?action=listerAdherent">Annuler</a>
+					<a type="button" name="btAnnuler" class="btn btn-danger" href="Controleur?action=listeAdherent">Annuler</a>
 					<button type="submit" name="bt" class="btn btn-primary">${action}</button>
 				</div>
 			</div>

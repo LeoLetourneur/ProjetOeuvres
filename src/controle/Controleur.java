@@ -21,11 +21,14 @@ import meserreurs.*;
 public class Controleur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION_TYPE = "action";
-	private static final String LISTER_RADHERENT = "listerAdherent";
+	
+	private static final String LISTE_ADHERENT = "listeAdherent";
+	private static final String FORM_ADHERENT = "formAdherent";
 	private static final String AJOUTER_ADHERENT = "ajouterAdherent";
 	private static final String MODIFIER_ADHERENT = "modifierAdherent";
 	private static final String SUPPRIMER_ADHERENT = "supprimerAdherent";
 	private static final String INSERER_ADHERENT = "insererAdherent";
+	
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
 
@@ -63,9 +66,9 @@ public class Controleur extends HttpServlet {
 		String destinationPage = ERROR_PAGE;
 		
 		// execute l'action
-		if (LISTER_RADHERENT.equals(actionName)) {
+		if (LISTE_ADHERENT.equals(actionName)) {
 			request.setAttribute("tabTitle", "Liste des adhérents");
-			request.setAttribute("module", "LISTER_RADHERENT");
+			request.setAttribute("module", LISTE_ADHERENT);
 			
 			try {
 
@@ -77,13 +80,13 @@ public class Controleur extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			destinationPage = "/listerAdherent.jsp";
+			destinationPage = "/"+LISTE_ADHERENT+".jsp";
 		}
 		else if (AJOUTER_ADHERENT.equals(actionName)) {
 			request.setAttribute("tabTitle", "Nouvel adhérent");
-			request.setAttribute("module", AJOUTER_ADHERENT);
+			request.setAttribute("module", FORM_ADHERENT);
 			request.setAttribute("action", "Ajouter");
-			destinationPage = "/ajouterAdherent.jsp";
+			destinationPage = "/"+FORM_ADHERENT+".jsp";
 		} 
 		else if (MODIFIER_ADHERENT.equals(actionName)) {
 			
@@ -95,15 +98,19 @@ public class Controleur extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Actualisation adhérent");
-			request.setAttribute("module", MODIFIER_ADHERENT);
+			request.setAttribute("tabTitle", "Modification adhérent");
+			request.setAttribute("module", FORM_ADHERENT);
 			request.setAttribute("action", "Modifier");
-			destinationPage = "/ajouterAdherent.jsp";
+			destinationPage = "/"+FORM_ADHERENT+".jsp";
 		} 
 		else if (INSERER_ADHERENT.equals(actionName)) {
 			try {
 				Service unService = new Service();
-				int id = Integer.parseInt(request.getParameter("idAdherent"));
+				int id = -1;
+				
+				if(request.getParameter("idAdherent") != null && request.getParameter("idAdherent") != "")
+					id = Integer.parseInt(request.getParameter("idAdherent"));
+				
 				Adherent adherent;
 				
 				if(id > 0) {
@@ -126,8 +133,8 @@ public class Controleur extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("tabTitle", "Liste des adhérents");
-			request.setAttribute("module", "LISTER_RADHERENT");
-			destinationPage = "/Controleur?action=listerAdherent";
+			request.setAttribute("module", LISTE_ADHERENT);
+			destinationPage = "/Controleur?action="+LISTE_ADHERENT;
 		}
 		else if (SUPPRIMER_ADHERENT.equals(actionName)) {
 			try {
@@ -140,8 +147,8 @@ public class Controleur extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("tabTitle", "Liste des adhérents");
-			request.setAttribute("module", "LISTER_RADHERENT");
-			destinationPage = "/Controleur?action=listerAdherent";
+			request.setAttribute("module", LISTE_ADHERENT);
+			destinationPage = "/Controleur?action="+LISTE_ADHERENT;
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
