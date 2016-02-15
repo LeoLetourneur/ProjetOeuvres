@@ -6,20 +6,24 @@ import java.util.*;
 import metier.*;
 import persistance.*;
 
-public class Service {
+public class AdherentService {
 
-	// Mise � jour des caract�ristiques d'un adh�rent
-	// Le booleen indique s'il s'agit d'un nouvel adh�rent, auquel cas on fait
-	// une cr�ation
-
-	public void insertAdherent(Adherent unAdherent) throws MonException {
+	/**
+	 * Ajout d'un adhérent en base de données
+	 * 
+	 * @param adherent
+	 * @throws MonException
+	 */
+	public void insertAdherent(Adherent adherent) throws MonException {
 		String mysql;
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
-			mysql = "insert into adherent  (nom_adherent,prenom_adherent,ville_adherent)  " + "values ('"
-					+ unAdherent.getNomAdherent();
-			mysql += "'" + ",'" + unAdherent.getPrenomAdherent() + "','" + unAdherent.getVilleAdherent() + "')";
+			mysql = "INSERT INTO adherent  (nom_adherent, prenom_adherent, ville_adherent) values ("+
+					"'" + adherent.getNomAdherent() + 
+					"','" + adherent.getPrenomAdherent() + 
+					"','" + adherent.getVilleAdherent() + 
+					"')";
 
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
@@ -27,13 +31,19 @@ public class Service {
 		}
 	}
 
+	/**
+	 * Modification d'un adhérent en base de données
+	 * 
+	 * @param adherent
+	 * @throws MonException
+	 */
 	public void updateAdherent(Adherent adherent) throws MonException {
 		String mysql;
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
-			mysql = "UPDATE adherent "+
-					"SET nom_adherent = '"+adherent.getNomAdherent()+"', "+
+			mysql = "UPDATE adherent SET "+
+					"nom_adherent = '"+adherent.getNomAdherent()+"', "+
 					"prenom_adherent = '"+adherent.getPrenomAdherent()+"', "+
 					"ville_adherent = '"+adherent.getVilleAdherent()+"' "+
 					"WHERE id_adherent = "+adherent.getIdAdherent();
@@ -44,12 +54,14 @@ public class Service {
 		}
 	}
 	
-	// gestion des adherents
-	// Consultation d'un adh�rent par son num�ro
-	// Fabrique et renvoie un objet adh�rent contenant le r�sultat de la requ�te
-	// BDD
+	/**
+	 * Consulter un adhérent par Id
+	 * Fabrique et renvoie un objet adhérent contenant le résultat de la requète
+	 * 
+	 * @param numero integer
+	 */
 	public Adherent consulterAdherent(int numero) throws MonException {
-		String mysql = "select * from adherent where id_adherent=" + numero;
+		String mysql = "SELECT * FROM adherent WHERE id_adherent = " + numero;
 		List<Adherent> mesAdh = consulterListeAdherents(mysql);
 		if (mesAdh.isEmpty())
 			return null;
@@ -58,14 +70,23 @@ public class Service {
 		}
 	}
 
-	// Consultation des adh�rents
-	// Fabrique et renvoie une liste d'objets adh�rent contenant le r�sultat de
-	// la requ�te BDD
+	/**
+	 * Consulter tous les adhérents
+	 * Fabrique et renvoie les objets adhérent contenant le résultat de la requète
+	 * 
+	 * @throws MonException
+	 */
 	public List<Adherent> consulterListeAdherents() throws MonException {
-		String mysql = "select * from adherent";
+		String mysql = "SELECT * FROM adherent";
 		return consulterListeAdherents(mysql);
 	}
 
+	/**
+	 * Construire les objects Adherent en fonction de la requête passée en paramêtre
+	 * 
+	 * @param mysql String
+	 * @throws MonException
+	 */
 	private List<Adherent> consulterListeAdherents(String mysql) throws MonException {
 		List<Object> rs;
 		List<Adherent> mesAdherents = new ArrayList<Adherent>();
@@ -74,14 +95,11 @@ public class Service {
 			DialogueBd unDialogueBd = DialogueBd.getInstance();
 			rs = DialogueBd.lecture(mysql);
 			while (index < rs.size()) {
-				// On cr�e un stage
 				Adherent unA = new Adherent();
-				// il faut redecouper la liste pour retrouver les lignes
 				unA.setIdAdherent(Integer.parseInt(rs.get(index + 0).toString()));
 				unA.setNomAdherent(rs.get(index + 1).toString());
 				unA.setPrenomAdherent(rs.get(index + 2).toString());
 				unA.setVilleAdherent(rs.get(index + 3).toString());
-				// On incr�mente tous les 3 champs
 				index = index + 4;
 				mesAdherents.add(unA);
 			}
@@ -92,6 +110,12 @@ public class Service {
 		}
 	}
 
+	/**
+	 * Supprimer un adhérent par Id
+	 * 
+	 * @param numero integer
+	 * @throws MonException
+	 */
 	public boolean deleteAdherent(int id) throws MonException {
 		String mysql;
 

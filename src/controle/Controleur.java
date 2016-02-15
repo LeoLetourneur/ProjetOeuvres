@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import metier.*;
-import dao.Service;
+import dao.AdherentService;
 import meserreurs.*;
 
 /**
@@ -72,7 +72,7 @@ public class Controleur extends HttpServlet {
 			
 			try {
 
-				Service unService = new Service();
+				AdherentService unService = new AdherentService();
 				request.setAttribute("mesAdherents", unService.consulterListeAdherents());
 
 			} catch (MonException e) {
@@ -91,7 +91,7 @@ public class Controleur extends HttpServlet {
 		else if (MODIFIER_ADHERENT.equals(actionName)) {
 			
 			try {
-				Service unService = new Service();
+				AdherentService unService = new AdherentService();
 				Adherent adherentAModifier = unService.consulterAdherent(Integer.parseInt(request.getParameter("idAdherent")));
 				request.setAttribute("adherent", adherentAModifier);
 			} catch (MonException e) {
@@ -105,7 +105,7 @@ public class Controleur extends HttpServlet {
 		} 
 		else if (INSERER_ADHERENT.equals(actionName)) {
 			try {
-				Service unService = new Service();
+				AdherentService unService = new AdherentService();
 				int id = -1;
 				
 				if(request.getParameter("idAdherent") != null && request.getParameter("idAdherent") != "")
@@ -138,7 +138,7 @@ public class Controleur extends HttpServlet {
 		}
 		else if (SUPPRIMER_ADHERENT.equals(actionName)) {
 			try {
-				Service unService = new Service();
+				AdherentService unService = new AdherentService();
 				int id = Integer.parseInt(request.getParameter("idAdherent"));
 				boolean success = unService.deleteAdherent(id);
 
