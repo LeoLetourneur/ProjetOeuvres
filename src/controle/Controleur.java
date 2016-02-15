@@ -82,6 +82,7 @@ public class Controleur extends HttpServlet {
 		else if (AJOUTER_ADHERENT.equals(actionName)) {
 			request.setAttribute("tabTitle", "Nouvel adhérent");
 			request.setAttribute("module", AJOUTER_ADHERENT);
+			request.setAttribute("action", "Ajouter");
 			destinationPage = "/ajouterAdherent.jsp";
 		} 
 		else if (MODIFIER_ADHERENT.equals(actionName)) {
@@ -126,7 +127,6 @@ public class Controleur extends HttpServlet {
 			}
 			request.setAttribute("tabTitle", "Liste des adhérents");
 			request.setAttribute("module", "LISTER_RADHERENT");
-			request.setAttribute("action", "Ajouter");
 			destinationPage = "/Controleur?action=listerAdherent";
 		}
 		else if (SUPPRIMER_ADHERENT.equals(actionName)) {
