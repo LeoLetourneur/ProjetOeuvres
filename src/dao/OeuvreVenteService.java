@@ -76,10 +76,9 @@ public class OeuvreVenteService {
 				oeuvre.setPrixOeuvrevente(Float.parseFloat(rs.get(index + 3).toString())); 
 				int idProprietaire = Integer.parseInt(rs.get(index + 4).toString());
 				
-				AdherentService adService = new AdherentService();
-				Adherent adherant = adService.consulterAdherent(idProprietaire);
-				Proprietaire prop = new Proprietaire(idProprietaire, adherant.getNomAdherent(), adherant.getPrenomAdherent());
-				oeuvre.setProprietaire(prop);
+				ProprietaireService pService = new ProprietaireService();
+				Proprietaire proprietaire = pService.consulterProprietaire(idProprietaire);
+				oeuvre.setProprietaire(proprietaire);
 
 				index = index + 5;
 				mesOeuvresVentes.add(oeuvre);
