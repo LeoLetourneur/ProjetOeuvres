@@ -14,10 +14,12 @@ public class OeuvreVenteService {
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
-			mysql = "insert into oeuvrevente  (titre_oeuvrevente,etat_oeuvrevente,prix_oeuvrevente, id_proprietaire)  " + "values ('"
-					+ oeuvreVente.getTitreOeuvrevente();
-			mysql += "','" + oeuvreVente.getEtatOeuvrevente() + "','" + oeuvreVente.getPrixOeuvrevente();
-			mysql +=  "','" + oeuvreVente.getProprietaire().getIdProprietaire() + "')";
+			mysql = "INSERT INTO oeuvrevente  (titre_oeuvrevente, etat_oeuvrevente,prix_oeuvrevente, id_proprietaire) values (" +
+					"'" + oeuvreVente.getTitreOeuvrevente() +
+					"','" + oeuvreVente.getEtatOeuvrevente() + 
+					"','" + oeuvreVente.getPrixOeuvrevente() +
+					"','" + oeuvreVente.getProprietaire().getIdProprietaire() + 
+					"')";
 
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
@@ -30,8 +32,8 @@ public class OeuvreVenteService {
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
-			mysql = "UPDATE oeuvrevente "+
-					"SET titre_oeuvrevente = '"+oeuvreVente.getTitreOeuvrevente()+"', "+
+			mysql = "UPDATE oeuvrevente SET "+
+					"titre_oeuvrevente = '"+oeuvreVente.getTitreOeuvrevente()+"', "+
 					"etat_oeuvrevente = '"+oeuvreVente.getEtatOeuvrevente()+"', "+
 					"prix_oeuvrevente = '"+oeuvreVente.getPrixOeuvrevente()+"', "+
 					"id_proprietaire = '" + oeuvreVente.getProprietaire().getIdProprietaire()+"' "+
@@ -44,7 +46,7 @@ public class OeuvreVenteService {
 	}
 	
 	public Oeuvrevente consulterOeuvrevente(int numero) throws MonException {
-		String mysql = "select * from oeuvrevente where id_oeuvrevente=" + numero;
+		String mysql = "SELECT * FROM oeuvrevente WHERE id_oeuvrevente = " + numero;
 		List<Oeuvrevente> mesOeuvresVentes = consulterListeOeuvresVentes(mysql);
 		if (mesOeuvresVentes.isEmpty())
 			return null;
@@ -54,7 +56,7 @@ public class OeuvreVenteService {
 	}
 	
 	public List<Oeuvrevente> consulterListeOeuvresVentes() throws MonException {
-		String mysql = "select * from oeuvrevente";
+		String mysql = "SELECT * FROM oeuvrevente";
 		return consulterListeOeuvresVentes(mysql);
 	}
 	
@@ -71,9 +73,12 @@ public class OeuvreVenteService {
 				oeuvre.setIdOeuvrevente(Integer.parseInt(rs.get(index + 0).toString()));
 				oeuvre.setTitreOeuvrevente(rs.get(index + 1).toString());
 				oeuvre.setEtatOeuvrevente(rs.get(index + 2).toString());
-				oeuvre.setPrixOeuvrevente(Integer.parseInt(rs.get(index + 3).toString())); 
-				Proprietaire prop = new Proprietaire();
-				prop.setIdProprietaire(Integer.parseInt(rs.get(index + 4).toString()));
+				oeuvre.setPrixOeuvrevente(Float.parseFloat(rs.get(index + 3).toString())); 
+				int idProprietaire = Integer.parseInt(rs.get(index + 4).toString());
+				
+				AdherentService adService = new AdherentService();
+				Adherent adherant = adService.consulterAdherent(idProprietaire);
+				Proprietaire prop = new Proprietaire(idProprietaire, adherant.getNomAdherent(), adherant.getPrenomAdherent());
 				oeuvre.setProprietaire(prop);
 
 				index = index + 5;

@@ -78,6 +78,10 @@
 					<div class="buttonHeader col-xs-3 col-sm-2 col-md-2">
 						<p><a href="Controleur?action=listeAdherent">Adhérents</a></p>
 					</div>
+					
+					<div class="buttonHeader col-xs-3 col-sm-2 col-md-2">
+						<p><a href="Controleur?action=listeOeuvre">Oeuvres</a></p>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -9,7 +9,7 @@
 		<div>
 			<a type="button" class="btn btn-warning" href="index.jsp">Retour accueil</a>
 			<a type="button" class="btn btn-success" href="Controleur?action=ajouterAdherent">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout un adhérent
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un adhérent
 			</a>
 		</div>
 		
@@ -33,9 +33,19 @@
 					<td>${item.prenomAdherent}</td>
 	                <td>${item.villeAdherent}</td>
 	                <td>
-	                	<a type="button" class="btn btn-primary" href="Controleur?action=modifierAdherent&idAdherent=${item.idAdherent}">Modifier</a>
-	                	<a type="button" class="btn btn-danger" href="Controleur?action=supprimerAdherent&idAdherent=${item.idAdherent}">Supprimer</a>
-                	</td>
+	                	<a type="button" class="btn btn-info" href="#">
+	               			<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+	               		</a>
+	                	<a type="button" class="btn btn-success" href="#">
+	                		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+	                	</a>
+	                	<a type="button" class="btn btn-primary" href="Controleur?action=modifierAdherent&idAdherent=${item.idAdherent}">
+	               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+	               		</a>
+	                	<a type="button" class="btn btn-danger" href="Controleur?action=supprimerAdherent&idAdherent=${item.idAdherent}">
+	                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	                	</a>
+	                </td>
 				</tr>
 			</c:forEach>
 		</table>
