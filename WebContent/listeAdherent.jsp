@@ -36,7 +36,7 @@
 	                	<a type="button" class="btn btn-info" href="#">
 	               			<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 	               		</a>
-	                	<a type="button" class="btn btn-success" href="#">
+	                	<a type="button" class="btn btn-success" data-toggle="modal" data-target="#genericModal">
 	                		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 	                	</a>
 	                	<a type="button" class="btn btn-primary" href="Controleur?action=modifierAdherent&idAdherent=${item.idAdherent}">
@@ -50,5 +50,15 @@
 			</c:forEach>
 		</table>
 		
+		
+		<t:modal modalTitle="Envoyer un mail" modalAccept="Envoyer">
+			<jsp:body>
+			    <label>Objet</label>
+		    	<input />
+		    	<label>Corps</label>
+		    	<textarea placeholder="Texte du message"></textarea>
+		    </jsp:body>
+		</t:modal>
+
     </jsp:body>
 </t:layout>
