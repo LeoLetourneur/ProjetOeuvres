@@ -170,8 +170,10 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/"+LISTE_OEUVRE+".jsp";
 		}
 		else {
-			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
+			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";
 			request.setAttribute(ERROR_KEY, messageErreur);
+			request.setAttribute("tabTitle", "Erreur 404");
+			request.setAttribute("module", "erreur");
 		}
 		
 		// Redirection vers la page jsp appropriee
