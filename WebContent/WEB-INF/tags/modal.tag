@@ -1,7 +1,8 @@
+<%@attribute name="modalId" %>
 <%@attribute name="modalTitle" %>
 <%@attribute name="modalAccept" %>
 
-<div class="modal fade" id="genericModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="${modalId}" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
