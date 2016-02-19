@@ -16,11 +16,11 @@ public class ProprietaireService {
 	 */
 	public Proprietaire consulterProprietaire(int numero) throws MonException {
 		String mysql = "SELECT * FROM proprietaire WHERE id_proprietaire = " + numero;
-		List<Proprietaire> mesAdh = consulterListeProprietaires(mysql);
-		if (mesAdh.isEmpty())
+		List<Proprietaire> proprietaires = consulterListeProprietaires(mysql);
+		if (proprietaires.isEmpty())
 			return null;
 		else {
-			return mesAdh.get(0);
+			return proprietaires.get(0);
 		}
 	}
 
