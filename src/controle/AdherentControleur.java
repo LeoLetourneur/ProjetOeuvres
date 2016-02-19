@@ -12,14 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import metier.*;
 import dao.AdherentService;
-import dao.OeuvreVenteService;
 import meserreurs.*;
 
 /**
  * Servlet implementation class Controleur
  */
-@WebServlet("/Controleur")
-public class Controleur extends HttpServlet {
+@WebServlet("/Adherent")
+public class AdherentControleur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION_TYPE = "action";
 	
@@ -30,16 +29,13 @@ public class Controleur extends HttpServlet {
 	private static final String SUPPRIMER_ADHERENT = "supprimerAdherent";
 	private static final String INSERER_ADHERENT = "insererAdherent";
 	
-	private static final String LISTE_OEUVRE = "listeOeuvre";
-	private static final String FORM_OEUVRE = "formOeuvre";
-	
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Controleur() {
+	public AdherentControleur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -138,7 +134,7 @@ public class Controleur extends HttpServlet {
 			}
 			request.setAttribute("tabTitle", "Liste des adhérents");
 			request.setAttribute("module", LISTE_ADHERENT);
-			destinationPage = "/Controleur?action="+LISTE_ADHERENT;
+			destinationPage = "/Adherent?action="+LISTE_ADHERENT;
 		}
 		else if (SUPPRIMER_ADHERENT.equals(actionName)) {
 			try {
@@ -152,22 +148,7 @@ public class Controleur extends HttpServlet {
 			}
 			request.setAttribute("tabTitle", "Liste des adhérents");
 			request.setAttribute("module", LISTE_ADHERENT);
-			destinationPage = "/Controleur?action="+LISTE_ADHERENT;
-		}
-		else if (LISTE_OEUVRE.equals(actionName)) {
-			request.setAttribute("tabTitle", "Liste des oeuvres");
-			request.setAttribute("module", LISTE_OEUVRE);
-			
-			try {
-
-				OeuvreVenteService ovService = new OeuvreVenteService();
-				request.setAttribute("oeuvres", ovService.consulterListeOeuvresVentes());
-
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-
-			destinationPage = "/"+LISTE_OEUVRE+".jsp";
+			destinationPage = "/Adherent?action="+LISTE_ADHERENT;
 		}
 		else {
 			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";

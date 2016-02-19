@@ -10,7 +10,7 @@
 			<a type="button" class="btn btn-warning" href="index.jsp">
 				<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Retour accueil
 			</a>
-			<a type="button" class="btn btn-success" href="Controleur?action=ajouterOeuvre">
+			<a type="button" class="btn btn-success" href="Oeuvre?action=ajouterOeuvre">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter une oeuvre
 			</a>
 		</div>
@@ -37,10 +37,10 @@
 	                <td>${item.prixOeuvrevente}</td>
 	                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
 	                <td>
-	                	<a type="button" class="btn btn-primary" href="Controleur?action=modifierOeuvre&idOeuvre=${item.idOeuvrevente}">
+	                	<a type="button" class="btn btn-primary" href="Oeuvre?action=modifierOeuvre&idOeuvre=${item.idOeuvrevente}">
 	               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 	               		</a>
-	                	<a type="button" class="btn btn-danger" href="Controleur?action=supprimerOeuvre&idOeuvre=${item.idOeuvrevente}">
+	                	<a type="button" class="btn btn-danger" href="Oeuvre?action=supprimerOeuvre&idOeuvre=${item.idOeuvrevente}">
 	                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 	                	</a>
                 	</td>

@@ -49,8 +49,8 @@
                  </div>
                  <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 	<ul class="nav navbar-nav navbar-left">
-						<li class="hideBack"><a href="Controleur?action=listeAdherent">Adhérents</a></li>
-						<li class="hideBack"><a href="Controleur?action=listeOeuvre">Oeuvres</a></li>
+						<li class="hideBack"><a href="Adherent?action=listeAdherent">Adhérents</a></li>
+						<li class="hideBack"><a href="Oeuvre?action=listeOeuvre">Oeuvres</a></li>
 					</ul>
                 </div>
             </div>

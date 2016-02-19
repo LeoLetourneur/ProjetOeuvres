@@ -8,7 +8,7 @@
 		
 		<div>
 			<a type="button" class="btn btn-warning" href="index.jsp">Retour accueil</a>
-			<a type="button" class="btn btn-success" href="Controleur?action=ajouterAdherent">
+			<a type="button" class="btn btn-success" href="Adherent?action=ajouterAdherent">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un adhérent
 			</a>
 		</div>
@@ -39,10 +39,10 @@
 	                	<a type="button" class="btn btn-success" data-toggle="modal" data-target="#genericModal">
 	                		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 	                	</a>
-	                	<a type="button" class="btn btn-primary" href="Controleur?action=modifierAdherent&idAdherent=${item.idAdherent}">
+	                	<a type="button" class="btn btn-primary" href="Adherent?action=modifierAdherent&idAdherent=${item.idAdherent}">
 	               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 	               		</a>
-	                	<a type="button" class="btn btn-danger" href="Controleur?action=supprimerAdherent&idAdherent=${item.idAdherent}">
+	                	<a type="button" class="btn btn-danger" href="Adherent?action=supprimerAdherent&idAdherent=${item.idAdherent}">
 	                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 	                	</a>
 	                </td>

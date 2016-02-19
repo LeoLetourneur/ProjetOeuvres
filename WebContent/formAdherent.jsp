@@ -6,7 +6,7 @@
 		
 		<h1 align="center">${action} un adhérent</h1>
 		
-		<form class="form-horizontal" method="post" action="Controleur?action=insererAdherent" onsubmit="return checkFields()">
+		<form class="form-horizontal" method="post" action="Adherent?action=insererAdherent" onsubmit="return checkFields()">
 			
 			<input type="hidden" name="idAdherent" class="form-control" id="idAdherent" value="${adherent.idAdherent}">
 			
@@ -33,7 +33,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<a type="button" name="btAnnuler" class="btn btn-danger" href="Controleur?action=listeAdherent">Annuler</a>
+					<a type="button" name="btAnnuler" class="btn btn-danger" href="Adherent?action=listeAdherent">Annuler</a>
 					<button type="submit" name="bt" class="btn btn-primary">${action}</button>
 				</div>
 			</div>
