@@ -49,8 +49,15 @@
                  </div>
                  <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 	<ul class="nav navbar-nav navbar-left">
-						<li class="hideBack"><a href="Adherent?action=listeAdherent">Adhérents</a></li>
-						<li class="hideBack"><a href="Oeuvre?action=listeOeuvre">Oeuvres</a></li>
+						<li class="hideBack"><a href="Adherent?action=listeAdherent">
+							<span class="glyphicon big-glyphicon glyphicon-user" aria-hidden="true"></span>Adhérents
+						</a></li>
+						<li class="hideBack"><a href="OeuvreVente?action=listeOeuvreVente">
+							<span class="glyphicon big-glyphicon glyphicon-duplicate" aria-hidden="true"></span>Vente d'Oeuvres
+						</a></li>
+						<li class="hideBack"><a href="#">
+							<span class="glyphicon big-glyphicon glyphicon-file" aria-hidden="true"></span>Prêt d'Oeuvres
+						</a></li>
 					</ul>
                 </div>
             </div>

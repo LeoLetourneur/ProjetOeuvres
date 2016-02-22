@@ -28,9 +28,10 @@ a, button
 .navbar a
 {
 	text-decoration				: none;
-	color 						: #86549d !important;
+	//color 						: #86549d !important;
+	color 						: black !important;
 	font-weight					: bold;
-	line-height					: 40px !important;
+	text-align 					: center;
 }
 
 #navbar-collapse-target, .navbar-collapse {
@@ -40,6 +41,20 @@ a, button
 #navbar-collapse-target ul li.showBack {
 	background-color 			: #36254B;
 	border-bottom 				: 1px solid black;
+}
+
+.hideBack {
+	width : 100px;
+	margin-left : 10px;
+}
+
+.big-glyphicon {
+	height 						: 30px;
+	width 						: 30px;
+	font-size					: 30px;
+	display						: block;
+	margin 						: auto;
+	margin-bottom 				: 5px;
 }
 
 #body 

@@ -10,7 +10,7 @@
 			<a type="button" class="btn btn-warning" href="index.jsp">
 				<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Retour accueil
 			</a>
-			<a type="button" class="btn btn-success" href="Oeuvre?action=ajouterOeuvre">
+			<a type="button" class="btn btn-success" href="OeuvreVente?action=ajouterOeuvreVente">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter une oeuvre
 			</a>
 		</div>

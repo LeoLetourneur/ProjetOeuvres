@@ -18,13 +18,13 @@ import meserreurs.*;
 /**
  * Servlet implementation class Controleur
  */
-@WebServlet("/Oeuvre")
-public class OeuvreControleur extends HttpServlet {
+@WebServlet("/OeuvreVente")
+public class OeuvreVenteControleur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION_TYPE = "action";
 		
-	private static final String LISTE_OEUVRE = "listeOeuvre";
-	private static final String FORM_OEUVRE = "formOeuvre";
+	private static final String LISTE_OEUVREVENTE = "listeOeuvreVente";
+	private static final String FORM_OEUVREVENTE = "formOeuvreVente";
 	
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
@@ -32,7 +32,7 @@ public class OeuvreControleur extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public OeuvreControleur() {
+	public OeuvreVenteControleur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -63,10 +63,10 @@ public class OeuvreControleur extends HttpServlet {
 		String destinationPage = ERROR_PAGE;
 		
 		System.out.println(request.getRequestURI());
-		System.out.println(request.getContextPath());
-		if (LISTE_OEUVRE.equals(actionName)) {
-			request.setAttribute("tabTitle", "Liste des oeuvres");
-			request.setAttribute("module", LISTE_OEUVRE);
+		
+		if (LISTE_OEUVREVENTE.equals(actionName)) {
+			request.setAttribute("tabTitle", "Liste des oeuvres en vente");
+			request.setAttribute("module", LISTE_OEUVREVENTE);
 			
 			try {
 
@@ -77,7 +77,7 @@ public class OeuvreControleur extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			destinationPage = "/"+LISTE_OEUVRE+".jsp";
+			destinationPage = "/"+LISTE_OEUVREVENTE+".jsp";
 		}
 		else {
 			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";
