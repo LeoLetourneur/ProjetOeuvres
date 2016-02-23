@@ -1,0 +1,26 @@
+#titleList {
+	text-align 				: center;
+	font-size				: 15px;
+}
+
+.buttonHeader {
+	margin-bottom 			: 20px;
+}
+
+#dropdownDPPButton {
+	width 					: 70px;
+}
+
+#dropdownDisplayPerPage {
+	display 				: inline-block;
+	float 					: right;
+}
+
+.buttonFooter {
+	text-align 					: center;
+}
+
+.pagination .glyphicon {
+	font-size					: 16px;
+	padding : 2px;
+}

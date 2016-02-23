@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
@@ -8,13 +9,21 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/layout.css" rel="stylesheet" type="text/css" />
-		<link href="css/${module}.css" rel="stylesheet" type="text/css" /> <!-- Add css associated to current module-->
 		
 		<script src="lib/jquery/jquery-2.2.0.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/navbar.js"></script>
-		<script type="text/javascript" src="js/${module}.js"></script> <!-- Add js associated to current module-->
 		
+		<c:if test="${!empty vue}">
+			<link href="css/${vue}.css" rel="stylesheet" type="text/css" /> <!-- Add css associated to current vue-->
+			<script type="text/javascript" src="js/${vue}.js"></script> <!-- Add js associated to current vue-->
+		</c:if>
+		
+		<c:if test="${!empty module}">
+			<link href="css/${module}.css" rel="stylesheet" type="text/css" /> <!-- Add css associated to current module-->
+			<script type="text/javascript" src="js/${module}.js"></script> <!-- Add js associated to current module-->
+		</c:if>
+
 		<title>${tabTitle}</title>
 	</head>
 	

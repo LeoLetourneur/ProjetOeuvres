@@ -1,6 +1,7 @@
 package controle;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,11 +23,13 @@ public class AdherentControleur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION_TYPE = "action";
 	
+	private static final String LISTE = "liste";
+	private static final String AJOUTER = "ajouter";
+	private static final String MODIFIER = "modifier";
+	private static final String SUPPRIMER = "supprimer";
+	
 	private static final String LISTE_ADHERENT = "listeAdherent";
 	private static final String FORM_ADHERENT = "formAdherent";
-	private static final String AJOUTER_ADHERENT = "ajouterAdherent";
-	private static final String MODIFIER_ADHERENT = "modifierAdherent";
-	private static final String SUPPRIMER_ADHERENT = "supprimerAdherent";
 	private static final String INSERER_ADHERENT = "insererAdherent";
 	
 	private static final String ERROR_KEY = "messageErreur";
@@ -69,11 +72,15 @@ public class AdherentControleur extends HttpServlet {
 		if (LISTE_ADHERENT.equals(actionName)) {
 			request.setAttribute("tabTitle", "Liste des adhérents");
 			request.setAttribute("module", LISTE_ADHERENT);
-			
+			request.setAttribute("vue", LISTE);
 			try {
 
 				AdherentService unService = new AdherentService();
-				request.setAttribute("mesAdherents", unService.consulterListeAdherents());
+				List<Adherent> liste = unService.consulterListeAdherents();
+				request.setAttribute("adherents", liste);
+				float nombreAdherent = Float.parseFloat(liste.size()+"");
+				int nombrePage = (int) Math.ceil(nombreAdherent/5);
+				request.setAttribute("nbPage", nombrePage);
 
 			} catch (MonException e) {
 				// TODO Auto-generated catch block
@@ -82,13 +89,13 @@ public class AdherentControleur extends HttpServlet {
 
 			destinationPage = "/"+LISTE_ADHERENT+".jsp";
 		}
-		else if (AJOUTER_ADHERENT.equals(actionName)) {
+		else if (AJOUTER.equals(actionName)) {
 			request.setAttribute("tabTitle", "Nouvel adhérent");
 			request.setAttribute("module", FORM_ADHERENT);
 			request.setAttribute("action", "Ajouter");
 			destinationPage = "/"+FORM_ADHERENT+".jsp";
 		} 
-		else if (MODIFIER_ADHERENT.equals(actionName)) {
+		else if (MODIFIER.equals(actionName)) {
 			
 			try {
 				AdherentService unService = new AdherentService();
@@ -136,7 +143,7 @@ public class AdherentControleur extends HttpServlet {
 			request.setAttribute("module", LISTE_ADHERENT);
 			destinationPage = "/Adherent?action="+LISTE_ADHERENT;
 		}
-		else if (SUPPRIMER_ADHERENT.equals(actionName)) {
+		else if (SUPPRIMER.equals(actionName)) {
 			try {
 				AdherentService unService = new AdherentService();
 				int id = Integer.parseInt(request.getParameter("idAdherent"));
