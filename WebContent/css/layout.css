@@ -43,9 +43,9 @@ a, button
 	border-bottom 				: 1px solid black;
 }
 
-.hideBack {
-	width : 100px;
-	margin-left : 10px;
+#navbar-collapse-target ul li.hideBack {
+	width 						: 100px;
+	margin-left 				: 10px;
 }
 
 .big-glyphicon {

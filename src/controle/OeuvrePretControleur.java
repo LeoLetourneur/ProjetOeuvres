@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import metier.*;
 import dao.OeuvrePretService;
-import dao.OeuvreVenteService;
 import dao.ProprietaireService;
 import meserreurs.*;
 
