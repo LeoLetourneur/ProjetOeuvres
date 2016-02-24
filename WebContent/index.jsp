@@ -3,7 +3,7 @@
 
 <t:layout>
     <jsp:body>
-		<p align="center"> Médiathèque de SEGPATECK </p>
+		<p align="center"> Médiathèque de POLYTECH </p>
 		<p align="center"> Gestion de l'exposition 2016 </p>
 		<div class="nosFaces">
 			<img src="img/loic.jpg" alt="Loic" class="img-thumbnail img-responsive" height="200" width="200">

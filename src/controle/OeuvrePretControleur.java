@@ -57,22 +57,40 @@ public class OeuvrePretControleur extends parentControleur {
 			destinationPage = "/"+LISTE_OEUVREPRET+".jsp";
 		}
 		else if (AJOUTER.equals(actionName)) {
+			
+			try {
+				ProprietaireService service = new ProprietaireService();
+				List<Proprietaire> liste;
+				liste = service.consulterListeProprietaires();
+				request.setAttribute("proprietaires", liste);
+			} catch (MonException e) {
+				e.printStackTrace();
+			}
+			
 			request.setAttribute("tabTitle", "Nouvelle oeuvre en pret");
-			request.setAttribute("module", FORM_OEUVREPRET);
+			//request.setAttribute("module", FORM_OEUVREPRET);
 			request.setAttribute("action", "Ajouter");
 			destinationPage = "/" + FORM_OEUVREPRET + ".jsp";
 		}
 		else if (MODIFIER.equals(actionName)) {
 			
 			try {
+				ProprietaireService service = new ProprietaireService();
+				List<Proprietaire> liste;
+				liste = service.consulterListeProprietaires();
+				request.setAttribute("proprietaires", liste);
+			} catch (MonException e) {
+				e.printStackTrace();
+			}
+			try {
 				OeuvrePretService service = new OeuvrePretService();
-				Oeuvrepret oeuvreAModifier = service.consulterOeuvrePret(Integer.parseInt(request.getParameter("idOeuvrePret")));
+				Oeuvrepret oeuvreAModifier = service.consulterOeuvrePret(Integer.parseInt(request.getParameter("idOeuvre")));
 				request.setAttribute("oeuvrePret", oeuvreAModifier);
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
 			request.setAttribute("tabTitle", "Modification OeuvrePret");
-			request.setAttribute("module", FORM_OEUVREPRET);
+			//request.setAttribute("module", FORM_OEUVREPRET);
 			request.setAttribute("action", "Modifier");
 			destinationPage = "/" + FORM_OEUVREPRET + ".jsp";
 		}
@@ -81,8 +99,8 @@ public class OeuvrePretControleur extends parentControleur {
 				OeuvrePretService service = new OeuvrePretService();
 				
 				int id = -1;
-				if(request.getParameter("idOeuvrePret") != null && request.getParameter("idOeuvrePret") != "") {
-					id = Integer.parseInt(request.getParameter("idOeuvrePret"));
+				if(request.getParameter("idOeuvre") != null && request.getParameter("idOeuvre") != "") {
+					id = Integer.parseInt(request.getParameter("idOeuvre"));
 				}
 				
 				Oeuvrepret oeuvrePret;
@@ -91,10 +109,10 @@ public class OeuvrePretControleur extends parentControleur {
 				} else {
 					oeuvrePret = new Oeuvrepret();
 				}
-				oeuvrePret.setTitreOeuvrepret(request.getParameter("txtTitre"));
+				oeuvrePret.setTitreOeuvre(request.getParameter("txtTitre"));
 				
 				ProprietaireService pService = new ProprietaireService();
-				Proprietaire proprietaire = pService.consulterProprietaire(Integer.parseInt(request.getParameter("idProprietaire")));
+				Proprietaire proprietaire = pService.consulterProprietaire(Integer.parseInt(request.getParameter("txtProprietaire")));
 				oeuvrePret.setProprietaire(proprietaire);
 				
 				if(id > 0) {
@@ -111,7 +129,7 @@ public class OeuvrePretControleur extends parentControleur {
 		else if (SUPPRIMER.equals(actionName)) {
 			try {
 				OeuvrePretService service = new OeuvrePretService();
-				int id = Integer.parseInt(request.getParameter("idOeuvrePret"));
+				int id = Integer.parseInt(request.getParameter("idOeuvre"));
 				service.deleteOeuvrePret(id);
 				
 			} catch (MonException e) {

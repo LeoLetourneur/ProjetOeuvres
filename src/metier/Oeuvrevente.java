@@ -8,34 +8,21 @@ import java.io.Serializable;
  * 
  */
 
-public class Oeuvrevente implements Serializable {
+public class Oeuvrevente extends Oeuvre implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int idOeuvrevente;
+	
 	private String etatOeuvrevente;
 	private float prixOeuvrevente;
-	private String titreOeuvrevente;
-	private Proprietaire proprietaire;
+	
+	public Oeuvrevente(int idOeuvre, String etatOeuvrevente, float prixOeuvrevente, String titreOeuvre, Proprietaire proprietaire) {
+		super(idOeuvre, titreOeuvre, proprietaire);
 
-
-	public Oeuvrevente(int idOeuvrevente, String etatOeuvrevente, float prixOeuvrevente, String titreOeuvrevente,
-			Proprietaire proprietaire) {
-		super();
-		this.idOeuvrevente = idOeuvrevente;
 		this.etatOeuvrevente = etatOeuvrevente;
 		this.prixOeuvrevente = prixOeuvrevente;
-		this.titreOeuvrevente = titreOeuvrevente;
-		this.proprietaire = proprietaire;
 	}
 
 	public Oeuvrevente() {
-	}
-
-	public int getIdOeuvrevente() {
-		return this.idOeuvrevente;
-	}
-
-	public void setIdOeuvrevente(int idOeuvrevente) {
-		this.idOeuvrevente = idOeuvrevente;
+		super();
 	}
 
 	public String getEtatOeuvrevente() {
@@ -52,21 +39,5 @@ public class Oeuvrevente implements Serializable {
 
 	public void setPrixOeuvrevente(float prixOeuvrevente) {
 		this.prixOeuvrevente = prixOeuvrevente;
-	}
-
-	public String getTitreOeuvrevente() {
-		return this.titreOeuvrevente;
-	}
-
-	public void setTitreOeuvrevente(String titreOeuvrevente) {
-		this.titreOeuvrevente = titreOeuvrevente;
-	}
-
-	public Proprietaire getProprietaire() {
-		return this.proprietaire;
-	}
-
-	public void setProprietaire(Proprietaire proprietaire) {
-		this.proprietaire = proprietaire;
 	}
 }

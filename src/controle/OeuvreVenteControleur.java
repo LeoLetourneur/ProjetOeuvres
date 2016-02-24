@@ -85,7 +85,7 @@ public class OeuvreVenteControleur extends parentControleur {
 			
 			try {
 				OeuvreVenteService service = new OeuvreVenteService();
-				Oeuvrevente oeuvreAModifier = service.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvrevente")));
+				Oeuvrevente oeuvreAModifier = service.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvre")));
 				request.setAttribute("oeuvre", oeuvreAModifier);
 			} catch (MonException e) {
 				e.printStackTrace();
@@ -101,8 +101,8 @@ public class OeuvreVenteControleur extends parentControleur {
 				OeuvreVenteService service = new OeuvreVenteService();
 				
 				int id = -1;
-				if(request.getParameter("idOeuvrevente") != null && request.getParameter("idOeuvrevente") != "") {
-					id = Integer.parseInt(request.getParameter("idOeuvrevente"));
+				if(request.getParameter("idOeuvre") != null && request.getParameter("idOeuvre") != "") {
+					id = Integer.parseInt(request.getParameter("idOeuvre"));
 				}
 				
 				Oeuvrevente oeuvre;
@@ -116,7 +116,7 @@ public class OeuvreVenteControleur extends parentControleur {
 				Proprietaire proprietaire = serviceP.consulterProprietaire(Integer.parseInt(request.getParameter("txtProprietaire")));
 				
 				oeuvre.setEtatOeuvrevente("L");
-				oeuvre.setTitreOeuvrevente(request.getParameter("txtTitre"));
+				oeuvre.setTitreOeuvre(request.getParameter("txtTitre"));
 				oeuvre.setPrixOeuvrevente(Float.parseFloat(request.getParameter("txtPrix")));
 				oeuvre.setProprietaire(proprietaire);
 				
@@ -136,7 +136,7 @@ public class OeuvreVenteControleur extends parentControleur {
 			
 			try {
 				OeuvreVenteService service = new OeuvreVenteService();
-				int id = Integer.parseInt(request.getParameter("idOeuvrevente"));
+				int id = Integer.parseInt(request.getParameter("idOeuvre"));
 				service.deleteOeuvreVente(id);
 
 			} catch (MonException e) {

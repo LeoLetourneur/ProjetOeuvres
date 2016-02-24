@@ -26,16 +26,16 @@
 			
 					<c:forEach items="${oeuvres}" var="item">
 						<tr>
-							<td>${item.idOeuvrevente}</td>
-							<td>${item.titreOeuvrevente}</td>
+							<td>${item.idOeuvre}</td>
+							<td>${item.titreOeuvre}</td>
 							<td>${item.etatOeuvrevente}</td>
 			                <td>${item.prixOeuvrevente}</td>
 			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
 			                <td>
-			                	<a type="button" class="btn btn-primary" href="OeuvreVente?action=modifier&idOeuvrevente=${item.idOeuvrevente}">
+			                	<a type="button" class="btn btn-primary" href="OeuvreVente?action=modifier&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-			                	<a type="button" class="btn btn-danger" href="OeuvreVente?action=supprimer&idOeuvrevente=${item.idOeuvrevente}">
+			                	<a type="button" class="btn btn-danger" href="OeuvreVente?action=supprimer&idOeuvre=${item.idOeuvre}">
 			                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>
 		                	</td>

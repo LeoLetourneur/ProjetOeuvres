@@ -15,7 +15,7 @@ public class OeuvreVenteService {
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
 			mysql = "INSERT INTO oeuvrevente  (titre_oeuvrevente, etat_oeuvrevente,prix_oeuvrevente, id_proprietaire) values (" +
-					"'" + oeuvreVente.getTitreOeuvrevente() +
+					"'" + oeuvreVente.getTitreOeuvre() +
 					"','" + oeuvreVente.getEtatOeuvrevente() + 
 					"','" + oeuvreVente.getPrixOeuvrevente() +
 					"','" + oeuvreVente.getProprietaire().getIdProprietaire() + 
@@ -33,11 +33,11 @@ public class OeuvreVenteService {
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
 			mysql = "UPDATE oeuvrevente SET "+
-					"titre_oeuvrevente = '"+oeuvreVente.getTitreOeuvrevente()+"', "+
+					"titre_oeuvrevente = '"+oeuvreVente.getTitreOeuvre()+"', "+
 					"etat_oeuvrevente = '"+oeuvreVente.getEtatOeuvrevente()+"', "+
 					"prix_oeuvrevente = '"+oeuvreVente.getPrixOeuvrevente()+"', "+
 					"id_proprietaire = '" + oeuvreVente.getProprietaire().getIdProprietaire()+"' "+
-					"WHERE id_oeuvrevente = "+oeuvreVente.getIdOeuvrevente();
+					"WHERE id_oeuvrevente = "+oeuvreVente.getIdOeuvre();
 
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
@@ -77,8 +77,8 @@ public class OeuvreVenteService {
 			while (index < rs.size()) {
 				Oeuvrevente oeuvre = new Oeuvrevente();
 				
-				oeuvre.setIdOeuvrevente(Integer.parseInt(rs.get(index + 0).toString()));
-				oeuvre.setTitreOeuvrevente(rs.get(index + 1).toString());
+				oeuvre.setIdOeuvre(Integer.parseInt(rs.get(index + 0).toString()));
+				oeuvre.setTitreOeuvre(rs.get(index + 1).toString());
 				oeuvre.setEtatOeuvrevente(rs.get(index + 2).toString());
 				oeuvre.setPrixOeuvrevente(Float.parseFloat(rs.get(index + 3).toString())); 
 				int idProprietaire = Integer.parseInt(rs.get(index + 4).toString());

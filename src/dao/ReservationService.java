@@ -14,7 +14,7 @@ public class ReservationService {
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
 			mysql = "INSERT INTO reservation  (id_oeuvrevente, id_adherent, date_reservation) values (" +
-					"'" + reservation.getOeuvrevente().getIdOeuvrevente() +
+					"'" + reservation.getOeuvrevente().getIdOeuvre() +
 					"','" + reservation.getAdherent().getIdAdherent() +
 					"','" + reservation.getDate() +
 					"')";
@@ -32,7 +32,7 @@ public class ReservationService {
 		try {
 			mysql = "UPDATE reservation SET " +
 					"date_reservation = '" + reservation.getDate() + "' " +
-					"WHERE id_oeuvrevente = " + reservation.getOeuvrevente().getIdOeuvrevente() +
+					"WHERE id_oeuvrevente = " + reservation.getOeuvrevente().getIdOeuvre() +
 					"AND id_adherent = " + reservation.getAdherent().getIdAdherent();
 
 			unDialogueBd.insertionBD(mysql);

@@ -9,13 +9,13 @@
 		
 		<form class="form-horizontal" method="post" action="OeuvreVente?action=inserer">
 			
-			<input type="hidden" name="idOeuvrevente" class="form-control" id="idOeuvrevente" value="${oeuvre.idOeuvrevente}">
+			<input type="hidden" name="idOeuvre" class="form-control" id="idOeuvre" value="${oeuvre.idOeuvre}">
 			
 			<div class="form-group">
-				<label for="titreOeuvrevente" class="col-sm-2 control-label">Titre</label>
+				<label for="titreOeuvre" class="col-sm-2 control-label">Titre</label>
 				<div class="col-sm-3">
 					<input type="text" name="txtTitre" class="form-control"
-						id="titreOeuvrevente" placeholder="Titre" value="${oeuvre.titreOeuvrevente}">
+						id="titreOeuvre" placeholder="Titre" value="${oeuvre.titreOeuvre}">
 				</div>
 			</div>
 			<div class="form-group">
