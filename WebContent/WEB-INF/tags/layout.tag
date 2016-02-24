@@ -62,10 +62,10 @@
 							<span class="glyphicon big-glyphicon glyphicon-user" aria-hidden="true"></span>Adhérents
 						</a></li>
 						<li class="hideBack"><a href="OeuvreVente?action=liste">
-							<span class="glyphicon big-glyphicon glyphicon-duplicate" aria-hidden="true"></span>Vente d'Oeuvres
+							<span class="glyphicon big-glyphicon glyphicon-usd" aria-hidden="true"></span>Vente d'Oeuvres
 						</a></li>
 						<li class="hideBack"><a href="OeuvrePret?action=liste">
-							<span class="glyphicon big-glyphicon glyphicon-file" aria-hidden="true"></span>Prêt d'Oeuvres
+							<span class="glyphicon big-glyphicon glyphicon-transfer" aria-hidden="true"></span>Prêt d'Oeuvres
 						</a></li>
 					</ul>
                 </div>

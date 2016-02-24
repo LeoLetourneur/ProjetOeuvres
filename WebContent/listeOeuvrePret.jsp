@@ -28,6 +28,9 @@
 							<td>${item.titreOeuvre}</td>
 			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
 			                <td>
+			                	<a type="button" class="btn btn-success" href="OeuvreVente?action=preter&idOeuvre=${item.idOeuvre}">
+			               			<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+			               		</a>
 			                	<a type="button" class="btn btn-primary" href="OeuvrePret?action=modifier&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
