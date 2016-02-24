@@ -82,16 +82,18 @@ public class AdherentControleur extends HttpServlet {
 			request.setAttribute("currentNumberPerPage", nombreParPage);
 			
 			request.setAttribute("tabTitle", "Liste des adhérents");
-			//request.setAttribute("module", LISTE_ADHERENT);
 			request.setAttribute("vue", LISTE);
+			//request.setAttribute("module", LISTE_ADHERENT);
 			
 			try {
-				AdherentService unService = new AdherentService();
-				List<Adherent> liste = unService.consulterListeAdherents((int)page-1,(int)nombreParPage);
-				request.setAttribute("adherents", liste);
-				float nombreAdherent = Float.parseFloat(liste.size()+"");
+				AdherentService service = new AdherentService();
+				List<Adherent> listeTotal = service.consulterListeAdherents();
+				float nombreAdherent = Float.parseFloat(listeTotal.size()+"");
 				int nombrePage = (int) Math.ceil(nombreAdherent/nombreParPage);
 				request.setAttribute("nbPage", nombrePage);
+				
+				List<Adherent> liste = service.consulterListeAdherents((int)page-1,(int)nombreParPage);
+				request.setAttribute("adherents", liste);
 
 			} catch (MonException e) {
 				e.printStackTrace();

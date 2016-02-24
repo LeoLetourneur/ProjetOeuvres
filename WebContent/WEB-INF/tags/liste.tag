@@ -35,7 +35,7 @@
 			  <li class="parPageButton" data-value="10"><a>10</a></li>
 			  <li class="parPageButton" data-value="20"><a>20</a></li>
 			  <li class="parPageButton" data-value="50"><a>50</a></li>
-			  <li class="parPageButton" data-value="-1"><a>Tous</a></li>
+			  <li class="parPageButton" data-value="10000"><a>Tous</a></li>
 			</ul>
 		</div>
 	</div>
@@ -51,17 +51,17 @@
 					<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
 				</a>
 			</li>
-			<li class="pageButton" data-value="${currentPage-1}">
+			<li class="${currentPage>1 ? 'pageButton' : 'disabled'}" data-value="${currentPage-1}">
 				<a aria-label="Précédente">
 					<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
 				</a>
 			</li>
 			
 			<c:forEach var="i" begin="1" end="${nbPage}">
-				<li class="pageButton" data-value="${i}"><a>${i}</a></li>
+				<li class="${currentPage==i ? 'active' : 'pageButton'}" data-value="${i}"><a>${i}</a></li>
 			</c:forEach>
 			
-			<li class="pageButton" data-value="${currentPage+1}">
+			<li class="${currentPage<nbPage ? 'pageButton' : 'disabled'}" data-value="${currentPage+1}">
 				<a aria-label="Prochaine">
 					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 				</a>

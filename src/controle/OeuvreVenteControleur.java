@@ -83,17 +83,18 @@ public class OeuvreVenteControleur extends HttpServlet {
 			request.setAttribute("currentNumberPerPage", nombreParPage);
 			
 			request.setAttribute("tabTitle", "Liste des oeuvres en vente");
-			//request.setAttribute("module", LISTE_OEUVREVENTE);
 			request.setAttribute("vue", LISTE);
+			//request.setAttribute("module", LISTE_OEUVREVENTE);
 			
 			try {
-				
-				OeuvreVenteService ovService = new OeuvreVenteService();
-				List<Oeuvrevente> liste = ovService.consulterListeOeuvresVentes((int)page-1,(int)nombreParPage);
-				request.setAttribute("oeuvres", liste);
-				float nombreOeuvre = Float.parseFloat(liste.size()+"");
+				OeuvreVenteService service = new OeuvreVenteService();
+				List<Oeuvrevente> listeTotal = service.consulterListeOeuvresVentes();
+				float nombreOeuvre = Float.parseFloat(listeTotal.size()+"");
 				int nombrePage = (int) Math.ceil(nombreOeuvre/nombreParPage);
 				request.setAttribute("nbPage", nombrePage);
+				
+				List<Oeuvrevente> liste = service.consulterListeOeuvresVentes((int)page-1,(int)nombreParPage);
+				request.setAttribute("oeuvres", liste);
 
 			} catch (MonException e) {
 				e.printStackTrace();

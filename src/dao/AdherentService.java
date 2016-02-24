@@ -81,6 +81,12 @@ public class AdherentService {
 		return consulterListeAdherents(mysql);
 	}
 	
+	/**
+	 * Consulter les adhérents par paquet
+	 * Fabrique et renvoie les objets adhérent contenant le résultat de la requète
+	 * 
+	 * @throws MonException
+	 */
 	public List<Adherent> consulterListeAdherents(int page, int nombreParPage) throws MonException {
 		String mysql = "SELECT * FROM adherent "+
 					   "ORDER BY id_adherent "+
