@@ -9,7 +9,9 @@
 		<t:liste titre="Liste des adhérents" 
     				classe="Adherent" 
     				ajout="Ajouter un adhérent" 
-    				nbPage="${nbPage}">
+    				nbPage="${nbPage}"
+    				currentPage="${currentPage}"
+    				currentNumberPerPage="${currentNumberPerPage}">
 			<jsp:body>		
 	
 				<table class="table table-hovers">
@@ -21,7 +23,7 @@
 						<th>Actions</th>
 					</tr>
 			
-					<c:forEach items="${adherents}" var="item" end="4">
+					<c:forEach items="${adherents}" var="item">
 						<tr>
 							<td>${item.idAdherent}</td>
 							<td>${item.nomAdherent}</td>

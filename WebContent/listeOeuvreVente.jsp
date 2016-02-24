@@ -9,7 +9,9 @@
     	<t:liste titre="Liste des oeuvres à vendre" 
     				classe="OeuvreVente" 
     				ajout="Ajouter une oeuvre" 
-    				nbPage="${nbPage}">
+    				nbPage="${nbPage}"
+    				currentPage="${currentPage}"
+    				currentNumberPerPage="${currentNumberPerPage}">
 			<jsp:body>
 				
 				<table class="table table-hovers">
@@ -22,7 +24,7 @@
 						<th>Actions</th>
 					</tr>
 			
-					<c:forEach items="${oeuvres}" var="item" end="10">
+					<c:forEach items="${oeuvres}" var="item">
 						<tr>
 							<td>${item.idOeuvrevente}</td>
 							<td>${item.titreOeuvrevente}</td>

@@ -4,6 +4,8 @@
 <%@attribute name="classe" %> <!-- Servlet name -->
 <%@attribute name="ajout" %> <!-- Label du bouton ajouter -->
 <%@attribute name="nbPage" %> <!-- Nombre de page pour la pagination -->
+<%@attribute name="currentPage" %> <!-- Numéro de page -->
+<%@attribute name="currentNumberPerPage" %> <!-- Nombre d'objet par page -->
 
 <div class="liste" id="liste">
 	
@@ -23,17 +25,17 @@
 			Afficher
 			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownDPPButton" 
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			  5
+			  ${currentNumberPerPage}
 			  <span class="caret"></span>
 			</button>
 			par page
 
 			<ul class="dropdown-menu" aria-labelledby="dropdownDPPButton">
-			  <li><a href="#">5</a></li>
-			  <li><a href="#">10</a></li>
-			  <li><a href="#">20</a></li>
-			  <li><a href="#">50</a></li>
-			  <li><a href="#">Tous</a></li>
+			  <li class="parPageButton" data-value="5"><a>5</a></li>
+			  <li class="parPageButton" data-value="10"><a>10</a></li>
+			  <li class="parPageButton" data-value="20"><a>20</a></li>
+			  <li class="parPageButton" data-value="50"><a>50</a></li>
+			  <li class="parPageButton" data-value="-1"><a>Tous</a></li>
 			</ul>
 		</div>
 	</div>
@@ -44,34 +46,37 @@
 		
 	<div class="buttonFooter">
 		<ul class="pagination">
-			<li>
-				<a href="#" aria-label="Première">
+			<li class="pageButton" data-value="1">
+				<a aria-label="Première">
 					<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
 				</a>
 			</li>
-			<li class="disabled">
-				<a href="#" aria-label="Précédente">
+			<li class="pageButton" data-value="${currentPage-1}">
+				<a aria-label="Précédente">
 					<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
 				</a>
 			</li>
 			
-			<li class="active"><a href="#">1</a></li>
-			
-			<c:forEach var="i" begin="2" end="${nbPage}">
-				<li><a href="#">${i}</a></li>
+			<c:forEach var="i" begin="1" end="${nbPage}">
+				<li class="pageButton" data-value="${i}"><a>${i}</a></li>
 			</c:forEach>
 			
-			<li>
-				<a href="#" aria-label="Prochaine">
+			<li class="pageButton" data-value="${currentPage+1}">
+				<a aria-label="Prochaine">
 					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 				</a>
 			</li>
-			<li>
-				<a href="#" aria-label="Dernière">
+			<li class="pageButton" data-value="${nbPage}">
+				<a aria-label="Dernière">
 					<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
 				</a>
 			</li>
 		</ul>
 	</div>
+	
+	<form id="changeTab" class="form-horizontal" method="post" action="${classe}?action=liste">
+		<input type="hidden" id="currentPage" name="currentPage" class="form-control" value="${currentPage}">
+		<input type="hidden" id="currentNumberPerPage" name="currentNumberPerPage" class="form-control" value="${currentNumberPerPage}">
+	</form>	
 		
 </div>

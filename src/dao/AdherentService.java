@@ -80,6 +80,13 @@ public class AdherentService {
 		String mysql = "SELECT * FROM adherent";
 		return consulterListeAdherents(mysql);
 	}
+	
+	public List<Adherent> consulterListeAdherents(int page, int nombreParPage) throws MonException {
+		String mysql = "SELECT * FROM adherent "+
+					   "ORDER BY id_adherent "+
+					   "LIMIT "+(page*nombreParPage)+","+nombreParPage;
+		return consulterListeAdherents(mysql);
+	}
 
 	/**
 	 * Construire les objects Adherent en fonction de la requête passée en paramêtre

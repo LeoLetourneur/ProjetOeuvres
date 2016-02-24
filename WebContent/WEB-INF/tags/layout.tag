@@ -58,10 +58,10 @@
                  </div>
                  <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 	<ul class="nav navbar-nav navbar-left">
-						<li class="hideBack"><a href="Adherent?action=listeAdherent">
+						<li class="hideBack"><a href="Adherent?action=liste">
 							<span class="glyphicon big-glyphicon glyphicon-user" aria-hidden="true"></span>Adhérents
 						</a></li>
-						<li class="hideBack"><a href="OeuvreVente?action=listeOeuvreVente">
+						<li class="hideBack"><a href="OeuvreVente?action=liste">
 							<span class="glyphicon big-glyphicon glyphicon-duplicate" aria-hidden="true"></span>Vente d'Oeuvres
 						</a></li>
 						<li class="hideBack"><a href="OeuvrePret?action=listeOeuvrePret">

@@ -41,7 +41,6 @@ public class OeuvreVenteControleur extends HttpServlet {
 	 */
 	public OeuvreVenteControleur() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -50,7 +49,6 @@ public class OeuvreVenteControleur extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processusTraiteRequete(request, response);
 	}
 
@@ -60,7 +58,6 @@ public class OeuvreVenteControleur extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processusTraiteRequete(request, response);
 	}
 
@@ -69,9 +66,22 @@ public class OeuvreVenteControleur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		
-		//System.out.println(request.getRequestURI());
-		
-		if (LISTE_OEUVREVENTE.equals(actionName)) {
+		if (LISTE.equals(actionName)) {
+			
+			int page = 1;
+			int nombreParPage = 5;
+			if(request.getParameter("currentPage") != null 
+			&& request.getParameter("currentPage") != "") {
+				page = Integer.parseInt(request.getParameter("currentPage"));
+			}
+			if(request.getParameter("currentNumberPerPage") != null 
+			&& request.getParameter("currentNumberPerPage") != "") {
+				nombreParPage = Integer.parseInt(request.getParameter("currentNumberPerPage"));
+			}
+			
+			request.setAttribute("currentPage", page);
+			request.setAttribute("currentNumberPerPage", nombreParPage);
+			
 			request.setAttribute("tabTitle", "Liste des oeuvres en vente");
 			//request.setAttribute("module", LISTE_OEUVREVENTE);
 			request.setAttribute("vue", LISTE);
@@ -79,10 +89,10 @@ public class OeuvreVenteControleur extends HttpServlet {
 			try {
 				
 				OeuvreVenteService ovService = new OeuvreVenteService();
-				List<Oeuvrevente> liste = ovService.consulterListeOeuvresVentes();
+				List<Oeuvrevente> liste = ovService.consulterListeOeuvresVentes((int)page-1,(int)nombreParPage);
 				request.setAttribute("oeuvres", liste);
 				float nombreOeuvre = Float.parseFloat(liste.size()+"");
-				int nombrePage = (int) Math.ceil(nombreOeuvre/5);
+				int nombrePage = (int) Math.ceil(nombreOeuvre/nombreParPage);
 				request.setAttribute("nbPage", nombrePage);
 
 			} catch (MonException e) {
@@ -99,12 +109,11 @@ public class OeuvreVenteControleur extends HttpServlet {
 				liste = service.consulterListeProprietaires();
 				request.setAttribute("proprietaires", liste);
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			request.setAttribute("tabTitle", "Nouvel oeuvre à vendre");
-			request.setAttribute("module", FORM_OEUVREVENTE);
+			//request.setAttribute("module", FORM_OEUVREVENTE);
 			request.setAttribute("action", "Ajouter");
 			destinationPage = "/"+FORM_OEUVREVENTE+".jsp";
 		}
@@ -116,7 +125,6 @@ public class OeuvreVenteControleur extends HttpServlet {
 				liste = service.consulterListeProprietaires();
 				request.setAttribute("proprietaires", liste);
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -125,11 +133,10 @@ public class OeuvreVenteControleur extends HttpServlet {
 				Oeuvrevente oeuvreAModifier = service.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvrevente")));
 				request.setAttribute("oeuvre", oeuvreAModifier);
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("tabTitle", "Modification adhérent");
-			request.setAttribute("module", FORM_OEUVREVENTE);
+			//request.setAttribute("module", FORM_OEUVREVENTE);
 			request.setAttribute("action", "Modifier");
 			destinationPage = "/"+FORM_OEUVREVENTE+".jsp";
 		} 
@@ -137,13 +144,13 @@ public class OeuvreVenteControleur extends HttpServlet {
 			
 			try {
 				OeuvreVenteService service = new OeuvreVenteService();
+				
 				int id = -1;
 				if(request.getParameter("idOeuvrevente") != null && request.getParameter("idOeuvrevente") != "") {
 					id = Integer.parseInt(request.getParameter("idOeuvrevente"));
 				}
 				
 				Oeuvrevente oeuvre;
-				
 				if(id > 0) {
 					oeuvre = service.consulterOeuvrevente(id);
 				} else {
@@ -165,26 +172,23 @@ public class OeuvreVenteControleur extends HttpServlet {
 				}
 
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des oeuvres à vendre");
-			request.setAttribute("module", LISTE_OEUVREVENTE);
-			destinationPage = "/OeuvreVente?action="+LISTE_OEUVREVENTE;
+			
+			destinationPage = "/OeuvreVente?action="+LISTE;
 		}
 		else if (SUPPRIMER.equals(actionName)) {
+			
 			try {
 				OeuvreVenteService service = new OeuvreVenteService();
 				int id = Integer.parseInt(request.getParameter("idOeuvrevente"));
-				boolean success = service.deleteOeuvreVente(id);
+				service.deleteOeuvreVente(id);
 
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des oeuvres à vendre");
-			request.setAttribute("module", LISTE_OEUVREVENTE);
-			destinationPage = "/OeuvreVente?action="+LISTE_OEUVREVENTE;
+			
+			destinationPage = "/OeuvreVente?action="+LISTE;
 		}
 		else {
 			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";

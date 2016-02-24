@@ -40,16 +40,13 @@ public class AdherentControleur extends HttpServlet {
 	 */
 	public AdherentControleur() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processusTraiteRequete(request, response);
 	}
 
@@ -57,9 +54,7 @@ public class AdherentControleur extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processusTraiteRequete(request, response);
 	}
 
@@ -68,28 +63,44 @@ public class AdherentControleur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		
-		// execute l'action
-		if (LISTE_ADHERENT.equals(actionName)) {
+		//System.out.println(request.getRequestURI());
+		
+		if (LISTE.equals(actionName)) {
+			
+			int page = 1;
+			int nombreParPage = 5;
+			if(request.getParameter("currentPage") != null 
+			&& request.getParameter("currentPage") != "") {
+				page = Integer.parseInt(request.getParameter("currentPage"));
+			}
+			if(request.getParameter("currentNumberPerPage") != null 
+			&& request.getParameter("currentNumberPerPage") != "") {
+				nombreParPage = Integer.parseInt(request.getParameter("currentNumberPerPage"));
+			}
+			
+			request.setAttribute("currentPage", page);
+			request.setAttribute("currentNumberPerPage", nombreParPage);
+			
 			request.setAttribute("tabTitle", "Liste des adhérents");
-			request.setAttribute("module", LISTE_ADHERENT);
+			//request.setAttribute("module", LISTE_ADHERENT);
 			request.setAttribute("vue", LISTE);
+			
 			try {
-
 				AdherentService unService = new AdherentService();
-				List<Adherent> liste = unService.consulterListeAdherents();
+				List<Adherent> liste = unService.consulterListeAdherents((int)page-1,(int)nombreParPage);
 				request.setAttribute("adherents", liste);
 				float nombreAdherent = Float.parseFloat(liste.size()+"");
-				int nombrePage = (int) Math.ceil(nombreAdherent/5);
+				int nombrePage = (int) Math.ceil(nombreAdherent/nombreParPage);
 				request.setAttribute("nbPage", nombrePage);
 
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 			destinationPage = "/"+LISTE_ADHERENT+".jsp";
 		}
 		else if (AJOUTER.equals(actionName)) {
+			
 			request.setAttribute("tabTitle", "Nouvel adhérent");
 			request.setAttribute("module", FORM_ADHERENT);
 			request.setAttribute("action", "Ajouter");
@@ -102,24 +113,26 @@ public class AdherentControleur extends HttpServlet {
 				Adherent adherentAModifier = unService.consulterAdherent(Integer.parseInt(request.getParameter("idAdherent")));
 				request.setAttribute("adherent", adherentAModifier);
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			request.setAttribute("tabTitle", "Modification adhérent");
 			request.setAttribute("module", FORM_ADHERENT);
 			request.setAttribute("action", "Modifier");
 			destinationPage = "/"+FORM_ADHERENT+".jsp";
 		} 
 		else if (INSERER_ADHERENT.equals(actionName)) {
+			
 			try {
 				AdherentService unService = new AdherentService();
-				int id = -1;
 				
-				if(request.getParameter("idAdherent") != null && request.getParameter("idAdherent") != "")
+				int id = -1;
+				if(request.getParameter("idAdherent") != null 
+				&& request.getParameter("idAdherent") != "") {
 					id = Integer.parseInt(request.getParameter("idAdherent"));
+				}
 				
 				Adherent adherent;
-				
 				if(id > 0) {
 					adherent = unService.consulterAdherent(id);
 				} else {
@@ -136,26 +149,23 @@ public class AdherentControleur extends HttpServlet {
 				}
 
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des adhérents");
-			request.setAttribute("module", LISTE_ADHERENT);
-			destinationPage = "/Adherent?action="+LISTE_ADHERENT;
+			
+			destinationPage = "/Adherent?action="+LISTE;
 		}
 		else if (SUPPRIMER.equals(actionName)) {
+			
 			try {
 				AdherentService unService = new AdherentService();
 				int id = Integer.parseInt(request.getParameter("idAdherent"));
-				boolean success = unService.deleteAdherent(id);
+				unService.deleteAdherent(id);
 
 			} catch (MonException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des adhérents");
-			request.setAttribute("module", LISTE_ADHERENT);
-			destinationPage = "/Adherent?action="+LISTE_ADHERENT;
+			
+			destinationPage = "/Adherent?action="+LISTE;
 		}
 		else {
 			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";
