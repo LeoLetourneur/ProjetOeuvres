@@ -67,8 +67,6 @@ public class OeuvrePretControleur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		
-		System.out.println(request.getRequestURI());
-		
 		if (LISTE_OEUVREPRET.equals(actionName)) {
 			request.setAttribute("tabTitle", "Liste des oeuvres en pret");
 			request.setAttribute("module", LISTE_OEUVREPRET);
@@ -133,7 +131,7 @@ public class OeuvrePretControleur extends HttpServlet {
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des oeuvres prêts");
+			request.setAttribute("tabTitle", "Liste des oeuvres prï¿½ts");
 			request.setAttribute("module", LISTE_OEUVREPRET);
 			destinationPage = "/OeuvrePret?action="+LISTE_OEUVREPRET;
 		}
@@ -146,7 +144,7 @@ public class OeuvrePretControleur extends HttpServlet {
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des oeuvres prêts");
+			request.setAttribute("tabTitle", "Liste des oeuvres prï¿½ts");
 			request.setAttribute("module", LISTE_OEUVREPRET);
 			destinationPage = "/OeuvrePret?action="+LISTE_OEUVREPRET;
 		}

@@ -6,7 +6,7 @@
 		
 		<h1 align="center">${action} un adhérent</h1>
 		
-		<form class="form-horizontal" method="post" action="Adherent?action=insererAdherent" onsubmit="return checkFields()">
+		<form class="form-horizontal" method="post" action="Adherent?action=inserer" onsubmit="return checkFields()">
 			
 			<input type="hidden" name="idAdherent" class="form-control" id="idAdherent" value="${adherent.idAdherent}">
 			

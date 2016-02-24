@@ -7,7 +7,7 @@
 		
 		<h1 align="center">${action} une oeuvre</h1>
 		
-		<form class="form-horizontal" method="post" action="OeuvreVente?action=insererOeuvreVente">
+		<form class="form-horizontal" method="post" action="OeuvreVente?action=inserer">
 			
 			<input type="hidden" name="idOeuvrevente" class="form-control" id="idOeuvrevente" value="${oeuvre.idOeuvrevente}">
 			

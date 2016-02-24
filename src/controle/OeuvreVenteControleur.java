@@ -6,10 +6,8 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import metier.*;
 import dao.OeuvreVenteService;
@@ -20,47 +18,16 @@ import meserreurs.*;
  * Servlet implementation class Controleur
  */
 @WebServlet("/OeuvreVente")
-public class OeuvreVenteControleur extends HttpServlet {
+public class OeuvreVenteControleur extends parentControleur {
 	private static final long serialVersionUID = 1L;
-	private static final String ACTION_TYPE = "action";
-		
-	private static final String LISTE = "liste";
-	private static final String AJOUTER = "ajouter";
-	private static final String MODIFIER = "modifier";
-	private static final String SUPPRIMER = "supprimer";
 	
 	private static final String LISTE_OEUVREVENTE = "listeOeuvreVente";
 	private static final String FORM_OEUVREVENTE = "formOeuvreVente";
-	private static final String INSERER_OEUVREVENTE = "insererOeuvreVente";
-	
-	private static final String ERROR_KEY = "messageErreur";
-	private static final String ERROR_PAGE = "/erreur.jsp";
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public OeuvreVenteControleur() {
 		super();
 	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processusTraiteRequete(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processusTraiteRequete(request, response);
-	}
-
+	
 	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String actionName = request.getParameter(ACTION_TYPE);
@@ -68,22 +35,9 @@ public class OeuvreVenteControleur extends HttpServlet {
 		
 		if (LISTE.equals(actionName)) {
 			
-			int page = 1;
-			int nombreParPage = 5;
-			if(request.getParameter("currentPage") != null 
-			&& request.getParameter("currentPage") != "") {
-				page = Integer.parseInt(request.getParameter("currentPage"));
-			}
-			if(request.getParameter("currentNumberPerPage") != null 
-			&& request.getParameter("currentNumberPerPage") != "") {
-				nombreParPage = Integer.parseInt(request.getParameter("currentNumberPerPage"));
-			}
-			
-			request.setAttribute("currentPage", page);
-			request.setAttribute("currentNumberPerPage", nombreParPage);
+			super.processusTraiteRequete(request, response);
 			
 			request.setAttribute("tabTitle", "Liste des oeuvres en vente");
-			request.setAttribute("vue", LISTE);
 			//request.setAttribute("module", LISTE_OEUVREVENTE);
 			
 			try {
@@ -141,7 +95,7 @@ public class OeuvreVenteControleur extends HttpServlet {
 			request.setAttribute("action", "Modifier");
 			destinationPage = "/"+FORM_OEUVREVENTE+".jsp";
 		} 
-		else if (INSERER_OEUVREVENTE.equals(actionName)) {
+		else if (INSERER.equals(actionName)) {
 			
 			try {
 				OeuvreVenteService service = new OeuvreVenteService();
