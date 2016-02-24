@@ -6,7 +6,7 @@
 		
 		<h1 align="center">${action} une oeuvre prêt</h1>
 		
-		<form class="form-horizontal" method="post" action="OeuvrePret?action=insererOeuvrePret" onsubmit="return checkFields()">
+		<form class="form-horizontal" method="post" action="OeuvrePret?action=inserer">
 			
 			<input type="hidden" name="idOeuvrePret" class="form-control" id="idOeuvrePret" value="${oeuvrePret.idOeuvrepret}">
 			
@@ -25,7 +25,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<a type="button" class="btn btn-danger" href="OeuvrePret?action=listeOeuvrePret">Annuler</a>
+					<a type="button" class="btn btn-danger" href="OeuvrePret?action=liste">Annuler</a>
 					<button type="submit" name="bt" class="btn btn-primary">${action}</button>
 				</div>
 			</div>

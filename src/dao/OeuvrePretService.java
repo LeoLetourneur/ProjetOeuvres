@@ -55,6 +55,13 @@ public class OeuvrePretService {
 		return consulterListeOeuvresPret(mysql);
 	}
 	
+	public List<Oeuvrepret> consulterListeOeuvresPret(int page, int nombreParPage) throws MonException {
+		String mysql = "SELECT * FROM oeuvrepret "+
+					   "ORDER BY id_oeuvrepret "+
+					   "LIMIT "+(page*nombreParPage)+","+nombreParPage;
+		return consulterListeOeuvresPret(mysql);
+	}
+	
 	private List<Oeuvrepret> consulterListeOeuvresPret(String mysql) throws MonException {
 		List<Object> rs;
 		List<Oeuvrepret> mesOeuvresPret = new ArrayList<Oeuvrepret>();

@@ -64,7 +64,7 @@
 						<li class="hideBack"><a href="OeuvreVente?action=liste">
 							<span class="glyphicon big-glyphicon glyphicon-duplicate" aria-hidden="true"></span>Vente d'Oeuvres
 						</a></li>
-						<li class="hideBack"><a href="OeuvrePret?action=listeOeuvrePret">
+						<li class="hideBack"><a href="OeuvrePret?action=liste">
 							<span class="glyphicon big-glyphicon glyphicon-file" aria-hidden="true"></span>Prêt d'Oeuvres
 						</a></li>
 					</ul>

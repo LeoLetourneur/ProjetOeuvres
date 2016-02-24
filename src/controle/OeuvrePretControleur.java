@@ -1,18 +1,17 @@
 package controle;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import metier.*;
-import dao.AdherentService;
 import dao.OeuvrePretService;
+import dao.OeuvreVenteService;
 import dao.ProprietaireService;
 import meserreurs.*;
 
@@ -20,46 +19,14 @@ import meserreurs.*;
  * Servlet implementation class Controleur
  */
 @WebServlet("/OeuvrePret")
-public class OeuvrePretControleur extends HttpServlet {
+public class OeuvrePretControleur extends parentControleur {
 	private static final long serialVersionUID = 1L;
-	private static final String ACTION_TYPE = "action";
 		
 	private static final String LISTE_OEUVREPRET = "listeOeuvrePret";
 	private static final String FORM_OEUVREPRET = "formOeuvrePret";
-	private static final String AJOUTER_OEUVREPRET = "ajouterOeuvrePret";
-	private static final String MODIFIER_OEUVREPRET = "modifierOeuvrePret";
-	private static final String SUPPRIMER_OEURVREPRET = "supprimerOeuvrePret";
-	private static final String INSERER_OEUVREPRET = "insererOeuvrePret";
-	
-	private static final String ERROR_KEY = "messageErreur";
-	private static final String ERROR_PAGE = "/erreur.jsp";
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public OeuvrePretControleur() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
 	}
 
 	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
@@ -67,32 +34,40 @@ public class OeuvrePretControleur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		
-		if (LISTE_OEUVREPRET.equals(actionName)) {
+		if (LISTE.equals(actionName)) {
+			
+			super.processusTraiteRequete(request, response);
+			
 			request.setAttribute("tabTitle", "Liste des oeuvres en pret");
-			request.setAttribute("module", LISTE_OEUVREPRET);
+			//request.setAttribute("module", LISTE_OEUVREPRET);
 			
 			try {
-
-				OeuvrePretService opService = new OeuvrePretService();
-				request.setAttribute("oeuvres", opService.consulterListeOeuvresPret());
-
+				OeuvrePretService service = new OeuvrePretService();
+				List<Oeuvrepret> listeTotal = service.consulterListeOeuvresPret();
+				float nombreOeuvre = Float.parseFloat(listeTotal.size()+"");
+				int nombrePage = (int) Math.ceil(nombreOeuvre/nombreParPage);
+				request.setAttribute("nbPage", nombrePage);
+				
+				List<Oeuvrepret> liste = service.consulterListeOeuvresPret((int)page-1,(int)nombreParPage);
+				request.setAttribute("oeuvres", liste);
+				
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
 
 			destinationPage = "/"+LISTE_OEUVREPRET+".jsp";
 		}
-		else if (AJOUTER_OEUVREPRET.equals(actionName)) {
+		else if (AJOUTER.equals(actionName)) {
 			request.setAttribute("tabTitle", "Nouvelle oeuvre en pret");
 			request.setAttribute("module", FORM_OEUVREPRET);
 			request.setAttribute("action", "Ajouter");
 			destinationPage = "/" + FORM_OEUVREPRET + ".jsp";
 		}
-		else if (MODIFIER_OEUVREPRET.equals(actionName)) {
+		else if (MODIFIER.equals(actionName)) {
 			
 			try {
-				OeuvrePretService unService = new OeuvrePretService();
-				Oeuvrepret oeuvreAModifier = unService.consulterOeuvrePret(Integer.parseInt(request.getParameter("idOeuvrePret")));
+				OeuvrePretService service = new OeuvrePretService();
+				Oeuvrepret oeuvreAModifier = service.consulterOeuvrePret(Integer.parseInt(request.getParameter("idOeuvrePret")));
 				request.setAttribute("oeuvrePret", oeuvreAModifier);
 			} catch (MonException e) {
 				e.printStackTrace();
@@ -102,18 +77,18 @@ public class OeuvrePretControleur extends HttpServlet {
 			request.setAttribute("action", "Modifier");
 			destinationPage = "/" + FORM_OEUVREPRET + ".jsp";
 		}
-		else if (INSERER_OEUVREPRET.equals(actionName)) {
+		else if (INSERER.equals(actionName)) {
 			try {
-				OeuvrePretService unService = new OeuvrePretService();
-				int id = -1;
+				OeuvrePretService service = new OeuvrePretService();
 				
-				if(request.getParameter("idOeuvrePret") != null && request.getParameter("idOeuvrePret") != "")
+				int id = -1;
+				if(request.getParameter("idOeuvrePret") != null && request.getParameter("idOeuvrePret") != "") {
 					id = Integer.parseInt(request.getParameter("idOeuvrePret"));
+				}
 				
 				Oeuvrepret oeuvrePret;
-				
 				if(id > 0) {
-					oeuvrePret = unService.consulterOeuvrePret(id);
+					oeuvrePret = service.consulterOeuvrePret(id);
 				} else {
 					oeuvrePret = new Oeuvrepret();
 				}
@@ -124,29 +99,27 @@ public class OeuvrePretControleur extends HttpServlet {
 				oeuvrePret.setProprietaire(proprietaire);
 				
 				if(id > 0) {
-					unService.updateOeuvrePret(oeuvrePret);
+					service.updateOeuvrePret(oeuvrePret);
 				} else {
-					unService.insertOeuvrePret(oeuvrePret);
+					service.insertOeuvrePret(oeuvrePret);
 				}
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des oeuvres pr�ts");
-			request.setAttribute("module", LISTE_OEUVREPRET);
-			destinationPage = "/OeuvrePret?action="+LISTE_OEUVREPRET;
+			
+			destinationPage = "/OeuvrePret?action="+LISTE;
 		}
-		else if (SUPPRIMER_OEURVREPRET.equals(actionName)) {
+		else if (SUPPRIMER.equals(actionName)) {
 			try {
-				OeuvrePretService unService = new OeuvrePretService();
+				OeuvrePretService service = new OeuvrePretService();
 				int id = Integer.parseInt(request.getParameter("idOeuvrePret"));
-				boolean success = unService.deleteOeuvrePret(id);
+				service.deleteOeuvrePret(id);
 				
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("tabTitle", "Liste des oeuvres pr�ts");
-			request.setAttribute("module", LISTE_OEUVREPRET);
-			destinationPage = "/OeuvrePret?action="+LISTE_OEUVREPRET;
+			
+			destinationPage = "/OeuvrePret?action="+LISTE;
 		}
 		else {
 			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";

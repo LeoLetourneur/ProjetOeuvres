@@ -6,43 +6,41 @@
 <t:layout>
     <jsp:body>
 		
-		<div>
-			<a type="button" class="btn btn-warning" href="index.jsp">
-				<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Retour accueil
-			</a>
-			<a type="button" class="btn btn-success" href="OeuvrePret?action=ajouterOeuvrePret">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter une oeuvre
-			</a>
-		</div>
-		
-		<p align="center">
-			Listing des oeuvres
-		</p>
-	
-		<table class="table table-hovers">
-			<tr>
-				<th>Numero</th>
-				<th>Titre</th>
-				<th>Propriétaire</th>
-				<th>Actions</th>
-			</tr>
-	
-			<c:forEach items="${oeuvres}" var="item">
-				<tr>
-					<td>${item.idOeuvrepret}</td>
-					<td>${item.titreOeuvrepret}</td>
-	                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
-	                <td>
-	                	<a type="button" class="btn btn-primary" href="OeuvrePret?action=modifierOeuvrePret&idOeuvrePret=${item.idOeuvrepret}">
-	               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-	               		</a>
-	                	<a type="button" class="btn btn-danger" href="OeuvrePret?action=supprimerOeuvrePret&idOeuvrePret=${item.idOeuvrepret}">
-	                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-	                	</a>
-                	</td>
-				</tr>
-			</c:forEach>
-		</table>
+		<t:liste titre="Liste des oeuvres en pret" 
+    				classe="OeuvrePret" 
+    				ajout="Ajouter une oeuvre" 
+    				nbPage="${nbPage}"
+    				currentPage="${currentPage}"
+    				currentNumberPerPage="${currentNumberPerPage}">
+			<jsp:body>
+			
+				<table class="table table-hovers">
+					<tr>
+						<th>Numero</th>
+						<th>Titre</th>
+						<th>Propriétaire</th>
+						<th>Actions</th>
+					</tr>
+			
+					<c:forEach items="${oeuvres}" var="item">
+						<tr>
+							<td>${item.idOeuvrepret}</td>
+							<td>${item.titreOeuvrepret}</td>
+			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
+			                <td>
+			                	<a type="button" class="btn btn-primary" href="OeuvrePret?action=modifier&idOeuvrePret=${item.idOeuvrepret}">
+			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			               		</a>
+			                	<a type="button" class="btn btn-danger" href="OeuvrePret?action=supprimer&idOeuvrePret=${item.idOeuvrepret}">
+			                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			                	</a>
+			               	</td>
+						</tr>
+					</c:forEach>
+				</table>
+				
+			</jsp:body>
+		</t:liste>
 		
     </jsp:body>
 </t:layout>
