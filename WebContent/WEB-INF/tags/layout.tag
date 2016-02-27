@@ -8,10 +8,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="lib/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
 		<link href="css/layout.css" rel="stylesheet" type="text/css" />
 		
 		<script src="lib/jquery/jquery-2.2.0.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="lib/datepicker/js/bootstrap-datepicker.js"></script>
 		<script type="text/javascript" src="js/navbar.js"></script>
 		
 		<c:if test="${!empty vue}">

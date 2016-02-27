@@ -1,6 +1,8 @@
 package dao;
 
 import meserreurs.MonException;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import metier.*;
@@ -13,11 +15,12 @@ public class ReservationService {
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
-			mysql = "INSERT INTO reservation  (id_oeuvrevente, id_adherent, date_reservation) values (" +
+			mysql = "INSERT INTO reservation  (id_oeuvrevente, id_adherent, date_reservation, statut) values (" +
 					"'" + reservation.getOeuvrevente().getIdOeuvre() +
 					"','" + reservation.getAdherent().getIdAdherent() +
-					"','" + reservation.getDate() +
-					"')";
+					"','" + new SimpleDateFormat("yyyy-MM-dd").format(reservation.getDate()) +
+					"', 'confirmee'" +
+					")";
 
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {

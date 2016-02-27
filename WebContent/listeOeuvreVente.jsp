@@ -32,7 +32,7 @@
 			                <td>${item.prixOeuvrevente}</td>
 			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
 			                <td>
-			                	<a type="button" class="btn btn-success" href="OeuvreVente?action=vendre&idOeuvre=${item.idOeuvre}">
+			                	<a type="button" class="btn btn-success" href="OeuvreVente?action=reserver&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 			               		</a>
 			                	<a type="button" class="btn btn-primary" href="OeuvreVente?action=modifier&idOeuvre=${item.idOeuvre}">
