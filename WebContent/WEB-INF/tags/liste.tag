@@ -35,7 +35,7 @@
 			  <li class="parPageButton" data-value="10"><a>10</a></li>
 			  <li class="parPageButton" data-value="20"><a>20</a></li>
 			  <li class="parPageButton" data-value="50"><a>50</a></li>
-			  <li class="parPageButton" data-value="10000"><a>Tous</a></li>
+			  <li class="parPageButton" data-value="100"><a>100</a></li>
 			</ul>
 		</div>
 	</div>
