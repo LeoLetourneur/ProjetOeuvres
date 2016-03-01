@@ -33,7 +33,7 @@
 			<div class="form-group">
 				<label for="datepicker" class="col-sm-2 control-label">Date</label>
 				<div class="col-sm-3">
-					<input type="date" name="txtDate" id="datepicker">
+					<input type="text" name="txtDate" id="datepicker">
 				</div>
 			</div>
 			<div class="form-group">
