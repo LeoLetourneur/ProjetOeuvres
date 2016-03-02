@@ -1,0 +1,29 @@
+#tousLesHexagones {
+	width : 400px;
+	margin : auto;
+}
+
+.hexagone {
+	width : 200px;
+	height : 200px;
+}
+
+.hexagone text {
+	display : none;
+}
+
+.hexagone text.display {
+	display : block;
+}
+
+.hexagone:hover {
+	opacity : 0.7;
+}
+
+.rightHexagone {
+	float : right;
+}
+
+#hexChat {
+	margin : auto;
+}

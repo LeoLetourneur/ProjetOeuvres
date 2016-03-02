@@ -1,13 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:layout>
-    <jsp:body>
-		<p align="center"> Médiathèque de POLYTECH </p>
-		<p align="center"> Gestion de l'exposition 2016 </p>
-		<div class="nosFaces">
-			<img src="img/loic.jpg" alt="Loic" class="img-thumbnail img-responsive" height="200" width="200">
-			<img src="img/leo.jpg" alt="Leo" class="img-thumbnail img-responsive" height="200" width="200">
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="css/index.css" rel="stylesheet" type="text/css" />
+		
+		<script src="lib/jquery/jquery-2.2.0.min.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/index.js"></script>
+
+		<title>Accueil</title>
+	</head>
+	
+	<body>
+		
+		<div id="body">
+			<div id="tousLesHexagones">
+			
+			<a href="">
+			<svg viewbox="-10 0 120 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				
+				<text font-size="10" x="50" y="40" text-anchor="middle">Médiathèque</text>
+				<text font-size="10" x="50" y="55" text-anchor="middle">de POLYTECH</text>
+				<text font-size="5" x="50" y="70" text-anchor="middle">Gestion de l'exposition 2016</text>
+				
+			</svg>
+			</a>
+			
+			<a href="Adherent?action=liste">
+			<svg class="hexagone" viewbox="5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				
+				<text font-size="10" x="50" y="52" text-anchor="middle">Adherent</text>
+			</svg>
+			</a>
+			
+			<a href="OeuvreVente?action=liste">
+			<svg class="hexagone rightHexagone" viewbox="-5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				
+				<text font-size="10" x="50" y="52" text-anchor="middle">Vente</text>
+			</svg>
+			</a>
+			
+			<svg id="hexagoneChat" viewbox="-25 0 150 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<pattern id="img" patternUnits="userSpaceOnUse" width="100" height="100">
+						<image id="imgChat" xlink:href="img/cote.png" x="-25" width="150" height="100" />
+					</pattern>
+				</defs>
+				<polygon id="hexChat" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img)"/>
+			</svg>
+
+			<a href="OeuvrePret?action=liste">
+			<svg class="hexagone" viewbox="5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				
+				<text font-size="10" x="50" y="52" text-anchor="middle">Pret</text>
+			</svg>
+			</a>
+			
+			<a href="Reservation?action=liste">
+			<svg class="hexagone rightHexagone" viewbox="-5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				
+				<text font-size="10" x="50" y="52" text-anchor="middle">Reservation</text>
+			</svg>
+			</a>
+			
+			</div>
 		</div>
-    </jsp:body>
-</t:layout>
+		
+		<div id="footer">
+			
+		</div>
+	
+	</body>
+</html>
