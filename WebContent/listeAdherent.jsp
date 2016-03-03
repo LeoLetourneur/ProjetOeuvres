@@ -6,21 +6,20 @@
 <t:layout>
     <jsp:body>
 		
-		<t:liste titre="Liste des adhérents" 
-    				classe="Adherent" 
+		<t:liste classe="Adherent" 
     				ajout="Ajouter un adhérent" 
     				nbPage="${nbPage}"
     				currentPage="${currentPage}"
     				currentNumberPerPage="${currentNumberPerPage}">
 			<jsp:body>		
 	
-				<table class="table table-hovers">
+				<table class="table table-hover table-striped">
 					<tr>
 						<th>Numero</th>
 						<th>Nom</th>
 						<th>Prénom</th>
 						<th>Ville</th>
-						<th>Actions</th>
+						<th></th>
 					</tr>
 			
 					<c:forEach items="${adherents}" var="item">
@@ -29,17 +28,17 @@
 							<td>${item.nomAdherent}</td>
 							<td>${item.prenomAdherent}</td>
 			                <td>${item.villeAdherent}</td>
-			                <td>
-			                	<a type="button" class="btn btn-info" href="#">
+			                <td class="actionCol">
+			                	<a type="button" class="btn self-border" href="#">
 			               			<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 			               		</a>
-			                	<a type="button" class="btn btn-success" data-toggle="modal" data-target="#emailModal">
+			                	<a type="button" class="btn self-border" data-toggle="modal" data-target="#emailModal">
 			                		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 			                	</a>
-			                	<a type="button" class="btn btn-primary" href="Adherent?action=modifier&idAdherent=${item.idAdherent}">
+			                	<a type="button" class="btn self-border" href="Adherent?action=modifier&idAdherent=${item.idAdherent}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-								<a type="button" class="btn btn-danger" href="Adherent?action=supprimer&idAdherent=${item.idAdherent}">
+								<a type="button" class="btn self-border" href="Adherent?action=supprimer&idAdherent=${item.idAdherent}">
 		<!-- 						<a type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal"> -->
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>

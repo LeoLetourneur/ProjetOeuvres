@@ -1,8 +1,3 @@
-#titleList {
-	text-align 					: center;
-	font-size					: 15px;
-}
-
 .buttonHeader {
 	margin-bottom 				: 20px;
 }
@@ -18,6 +13,7 @@
 #dropdownDisplayPerPage {
 	display 					: inline-block;
 	float 						: right;
+	color 						: #339999;
 }
 
 .buttonFooter {
@@ -28,7 +24,26 @@
 	cursor						: pointer;
 }
 
+.pagination .disabled a {
+	color						: #dee0dd !important;
+}
+
+.pagination .active a {
+	background-color			: #dee0dd;
+	border-color 				: #dee0dd;
+}
+
 .pagination .glyphicon {
 	font-size					: 16px;
 	padding 					: 2px;
 }
+
+a,
+.btn {
+	color 						: #339999 !important;
+}
+
+.actionCol {
+	text-align					: right;
+}
+

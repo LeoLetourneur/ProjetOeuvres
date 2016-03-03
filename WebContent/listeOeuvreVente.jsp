@@ -6,22 +6,21 @@
 <t:layout>
     <jsp:body>
     	
-    	<t:liste titre="Liste des oeuvres à vendre" 
-    				classe="OeuvreVente" 
+    	<t:liste classe="OeuvreVente" 
     				ajout="Ajouter une oeuvre" 
     				nbPage="${nbPage}"
     				currentPage="${currentPage}"
     				currentNumberPerPage="${currentNumberPerPage}">
 			<jsp:body>
 				
-				<table class="table table-hovers">
+				<table class="table table-hover table-striped">
 					<tr>
 						<th>Numero</th>
 						<th>Titre</th>
 						<th>Etat</th>
 						<th>Prix</th>
 						<th>Propriétaire</th>
-						<th>Actions</th>
+						<th></th>
 					</tr>
 			
 					<c:forEach items="${oeuvres}" var="item">
@@ -31,14 +30,14 @@
 							<td>${item.etatOeuvrevente}</td>
 			                <td>${item.prixOeuvrevente}</td>
 			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
-			                <td>
-			                	<a type="button" class="btn btn-success" href="OeuvreVente?action=reserver&idOeuvre=${item.idOeuvre}">
+			                <td class="actionCol">
+			                	<a type="button" class="btn self-border" href="OeuvreVente?action=reserver&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 			               		</a>
-			                	<a type="button" class="btn btn-primary" href="OeuvreVente?action=modifier&idOeuvre=${item.idOeuvre}">
+			                	<a type="button" class="btn self-border" href="OeuvreVente?action=modifier&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-			                	<a type="button" class="btn btn-danger" href="OeuvreVente?action=supprimer&idOeuvre=${item.idOeuvre}">
+			                	<a type="button" class="btn self-border" href="OeuvreVente?action=supprimer&idOeuvre=${item.idOeuvre}">
 			                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>
 		                	</td>
