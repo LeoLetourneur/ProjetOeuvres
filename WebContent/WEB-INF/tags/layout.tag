@@ -39,7 +39,7 @@
                         <span class="icon-bar self-border"></span>
                         <span class="icon-bar self-border"></span>
                     </button>
-                    <a class="titreNavBar" href="/ProjetOeuvresMaven/">
+                    <a class="titreNavBar" href="/ProjetOeuvres/">
                     	<svg class="hexagone" viewbox="5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 							<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
 							
