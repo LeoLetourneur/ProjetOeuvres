@@ -28,9 +28,6 @@ public class OeuvreVenteControleur extends parentControleur {
 	
 	private static final String LISTE_OEUVREVENTE = "listeOeuvreVente";
 	private static final String FORM_OEUVREVENTE = "formOeuvreVente";
-	private static final String FORM_RESERVATION = "formReservation";
-	private static final String RESERVER = "reserver";
-	private static final String VALIDER_RESERVATION = "validerReservation";
 
 	public OeuvreVenteControleur() {
 		super();
@@ -152,56 +149,6 @@ public class OeuvreVenteControleur extends parentControleur {
 			}
 			
 			destinationPage = "/OeuvreVente?action="+LISTE;
-		}
-		else if (RESERVER.equals(actionName)) {
-			try {
-				AdherentService aService = new AdherentService();
-				List<Adherent> adherents = aService.consulterListeAdherents();
-				
-				OeuvreVenteService oService = new OeuvreVenteService();
-				Oeuvrevente oeuvreAReserver = oService.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvre")));
-				
-				request.setAttribute("oeuvre", oeuvreAReserver);
-				request.setAttribute("adherents", adherents);
-				request.setAttribute("module", FORM_RESERVATION);
-				
-				destinationPage = "/"+FORM_RESERVATION+".jsp";
-				
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-		}
-		else if (VALIDER_RESERVATION.equals(actionName)) {
-			
-			try {
-				ReservationService rService = new ReservationService();
-				AdherentService aService = new AdherentService();
-				OeuvreVenteService oService = new OeuvreVenteService();
-				
-				Reservation reservation = new Reservation();
-				
-				Adherent adherent = aService.consulterAdherent(Integer.parseInt(request.getParameter("idAdherent")));
-				Oeuvrevente oeuvreVente = oService.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvre")));
-				
-				Date date = null;
-				try {
-					date = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("txtDate"));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
-				
-				reservation.setAdherent(adherent);
-				reservation.setOeuvrevente(oeuvreVente);
-				reservation.setDate(date);
-				
-				rService.insertReservation(reservation);
-				
-				destinationPage = "/OeuvreVente?action="+LISTE;
-				
-			} catch (MonException e){
-				e.printStackTrace();
-			}
 		}
 		else {
 			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";

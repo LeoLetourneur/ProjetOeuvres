@@ -2,6 +2,7 @@ package dao;
 
 import meserreurs.MonException;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -19,8 +20,8 @@ public class ReservationService {
 					"'" + reservation.getOeuvrevente().getIdOeuvre() +
 					"','" + reservation.getAdherent().getIdAdherent() +
 					"','" + new SimpleDateFormat("yyyy-MM-dd").format(reservation.getDate()) +
-					"', 'confirmee'" +
-					")";
+					"','" + reservation.getStatut() +
+					"')";
 
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
@@ -36,7 +37,7 @@ public class ReservationService {
 			mysql = "UPDATE reservation SET " +
 					"date_reservation = '" + reservation.getDate() + "' " +
 					"WHERE id_oeuvrevente = " + reservation.getOeuvrevente().getIdOeuvre() +
-					"AND id_adherent = " + reservation.getAdherent().getIdAdherent();
+					" AND id_adherent = " + reservation.getAdherent().getIdAdherent();
 
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
@@ -45,7 +46,7 @@ public class ReservationService {
 	}
 	
 	public Reservation consulterReservation(int idOeuvreVente, int idAdherent) throws MonException {
-		String mysql = "SELECT * FROM reservation WHERE id_oeuvrevente = " + idOeuvreVente + "AND id_adherent = " + idAdherent;
+		String mysql = "SELECT * FROM reservation WHERE id_oeuvrevente = " + idOeuvreVente + " AND id_adherent = " + idAdherent;
 		List<Reservation> mesReservations = consulterListeReservations(mysql);
 		if (mesReservations.isEmpty())
 			return null;
@@ -59,6 +60,13 @@ public class ReservationService {
 		return consulterListeReservations(mysql);
 	}
 	
+	public List<Reservation> consulterListeReservations(int page, int nombreParPage) throws MonException {
+		String mysql = "SELECT * FROM reservation "+
+					   "ORDER BY id_oeuvrevente "+
+					   "LIMIT "+(page*nombreParPage)+","+nombreParPage;
+		return consulterListeReservations(mysql);
+	}
+	
 	private List<Reservation> consulterListeReservations(String mysql) throws MonException {
 		List<Object> rs;
 		List<Reservation> mesReservations = new ArrayList<Reservation>();
@@ -69,17 +77,26 @@ public class ReservationService {
 			while (index < rs.size()) {
 				Reservation reservation = new Reservation();
 				
-				int idAdherent = Integer.parseInt(rs.get(index + 0).toString());
-				AdherentService aService = new AdherentService();
-				Adherent adherent = aService.consulterAdherent(idAdherent);
-				
-				int idOeuvreVente = Integer.parseInt(rs.get(index + 1).toString());
+				int idOeuvreVente = Integer.parseInt(rs.get(index + 0).toString());
 				OeuvreVenteService oService = new OeuvreVenteService();
 				Oeuvrevente oeuvre = oService.consulterOeuvrevente(idOeuvreVente);
 				
+				int idAdherent = Integer.parseInt(rs.get(index + 1).toString());
+				AdherentService aService = new AdherentService();
+				Adherent adherent = aService.consulterAdherent(idAdherent);
+								
 				reservation.setAdherent(adherent);
 				reservation.setOeuvrevente(oeuvre);
-				reservation.setDate(new Date(rs.get(index + 3).toString()));
+				
+				Date date = null;
+				try {
+					date = new SimpleDateFormat("yyyy-mm-dd").parse(rs.get(index + 2).toString());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				
+				reservation.setDate(date);
 
 				index = index + 4;
 				mesReservations.add(reservation);
@@ -96,7 +113,7 @@ public class ReservationService {
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
-			mysql = "DELETE FROM reservation WHERE id_oeuvrevente = " + idOeuvreVente + "AND id_adherent = " + idAdherent;
+			mysql = "DELETE FROM reservation WHERE id_oeuvrevente = " + idOeuvreVente + " AND id_adherent = " + idAdherent;
 
 			unDialogueBd.insertionBD(mysql);
 			return true;

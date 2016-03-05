@@ -7,7 +7,7 @@
 		
 		<h1 align="center">Réserver une oeuvre</h1>
 		
-		<form class="form-horizontal" method="post" action="OeuvreVente?action=validerReservation" onsubmit="return checkDate()">
+		<form class="form-horizontal" method="post" action="Reservation?action=inserer" onsubmit="return checkDate()">
 			
 			<input type="hidden" name="idOeuvre" class="form-control" id="idOeuvre" value="${oeuvre.idOeuvre}">
 			
@@ -33,7 +33,7 @@
 			<div class="form-group">
 				<label for="datepicker" class="col-sm-2 control-label">Date</label>
 				<div class="col-sm-3">
-					<input type="text" name="txtDate" id="datepicker">
+					<input type="text" name="txtDate" id="datepicker" value="${reservation.date}">
 				</div>
 			</div>
 			<div class="form-group">

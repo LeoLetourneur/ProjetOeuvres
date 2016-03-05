@@ -31,7 +31,7 @@
 			                <td>${item.prixOeuvrevente}</td>
 			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
 			                <td class="actionCol">
-			                	<a type="button" class="btn self-border" href="OeuvreVente?action=reserver&idOeuvre=${item.idOeuvre}">
+			                	<a type="button" class="btn self-border" href="Reservation?action=ajouter&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 			               		</a>
 			                	<a type="button" class="btn self-border" href="OeuvreVente?action=modifier&idOeuvre=${item.idOeuvre}">
