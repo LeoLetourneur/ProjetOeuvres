@@ -11,6 +11,7 @@ public abstract class parentControleur extends HttpServlet {
 	protected static final long serialVersionUID = 1L;
 	protected static final String ACTION_TYPE = "action";
 	
+	protected static final String FORM = "form";
 	protected static final String LISTE = "liste";
 	protected static final String INSERER = "inserer";
 	protected static final String AJOUTER = "ajouter";

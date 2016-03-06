@@ -62,6 +62,7 @@ public class AdherentControleur extends parentControleur {
 			request.setAttribute("tabTitle", "Nouvel adhérent");
 			request.setAttribute("module", FORM_ADHERENT);
 			request.setAttribute("action", "Ajouter");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/"+FORM_ADHERENT+".jsp";
 		} 
 		else if (MODIFIER.equals(actionName)) {
@@ -77,6 +78,7 @@ public class AdherentControleur extends parentControleur {
 			request.setAttribute("tabTitle", "Modification adhérent");
 			request.setAttribute("module", FORM_ADHERENT);
 			request.setAttribute("action", "Modifier");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/"+FORM_ADHERENT+".jsp";
 		} 
 		else if (INSERER.equals(actionName)) {

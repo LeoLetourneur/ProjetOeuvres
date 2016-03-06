@@ -73,8 +73,9 @@ public class OeuvreVenteControleur extends parentControleur {
 			}
 			
 			request.setAttribute("tabTitle", "Nouvel oeuvre à vendre");
-			//request.setAttribute("module", FORM_OEUVREVENTE);
+			request.setAttribute("module", FORM_OEUVREVENTE);
 			request.setAttribute("action", "Ajouter");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/"+FORM_OEUVREVENTE+".jsp";
 		}
 		else if (MODIFIER.equals(actionName)) {
@@ -96,8 +97,9 @@ public class OeuvreVenteControleur extends parentControleur {
 				e.printStackTrace();
 			}
 			request.setAttribute("tabTitle", "Modification oeuvre vente");
-			//request.setAttribute("module", FORM_OEUVREVENTE);
+			request.setAttribute("module", FORM_OEUVREVENTE);
 			request.setAttribute("action", "Modifier");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/"+FORM_OEUVREVENTE+".jsp";
 		} 
 		else if (INSERER.equals(actionName)) {

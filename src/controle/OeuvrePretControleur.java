@@ -63,13 +63,15 @@ public class OeuvrePretControleur extends parentControleur {
 				List<Proprietaire> liste;
 				liste = service.consulterListeProprietaires();
 				request.setAttribute("proprietaires", liste);
+				
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
 			
 			request.setAttribute("tabTitle", "Nouvelle oeuvre en pret");
-			//request.setAttribute("module", FORM_OEUVREPRET);
+			request.setAttribute("module", FORM_OEUVREPRET);
 			request.setAttribute("action", "Ajouter");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/" + FORM_OEUVREPRET + ".jsp";
 		}
 		else if (MODIFIER.equals(actionName)) {
@@ -90,8 +92,9 @@ public class OeuvrePretControleur extends parentControleur {
 				e.printStackTrace();
 			}
 			request.setAttribute("tabTitle", "Modification OeuvrePret");
-			//request.setAttribute("module", FORM_OEUVREPRET);
+			request.setAttribute("module", FORM_OEUVREPRET);
 			request.setAttribute("action", "Modifier");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/" + FORM_OEUVREPRET + ".jsp";
 		}
 		else if (INSERER.equals(actionName)) {

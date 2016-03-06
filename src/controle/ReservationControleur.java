@@ -84,8 +84,10 @@ public class ReservationControleur extends parentControleur {
 				e.printStackTrace();
 			}
 			
-			request.setAttribute("tabTitle", "Nouvelle r�servation");
+			request.setAttribute("tabTitle", "Nouvelle réservation");
+			request.setAttribute("module", FORM_RESERVATION);
 			request.setAttribute("action", "Ajouter");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/"+FORM_RESERVATION+".jsp";
 		}
 		else if (MODIFIER.equals(actionName)) {
@@ -118,7 +120,9 @@ public class ReservationControleur extends parentControleur {
 				e.printStackTrace();
 			}
 			request.setAttribute("tabTitle", "Modification reservation");
+			request.setAttribute("module", FORM_RESERVATION);
 			request.setAttribute("action", "Modifier");
+			request.setAttribute("vue", FORM);
 			destinationPage = "/"+FORM_RESERVATION+".jsp";
 		} 
 		else if (INSERER.equals(actionName)) {

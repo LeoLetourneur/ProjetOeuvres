@@ -5,54 +5,51 @@
 <t:layout>
     <jsp:body>
 		
-		<h1 align="center">Réserver une oeuvre</h1>
+		<t:form classe="Reservation" 
+    				titre="${action} une réservation" 
+    				action="${action}">
+			<jsp:body>
 		
-		<form class="form-horizontal" method="post" action="Reservation?action=inserer" onsubmit="return checkDate()">
+				<input type="hidden" name="idOeuvre" class="form-control" id="idOeuvre" value="${oeuvre.idOeuvre}">
+				
+				<div class="form-group">
+					<label for="titreOeuvre" class="col-sm-2 control-label">Titre</label>
+					<div class="col-sm-3">
+						<label class="form-control" id="titreOeuvre">${oeuvre.titreOeuvre}</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="prixOeuvrevente" class="col-sm-2 control-label">Prix</label>
+					<div class="col-sm-3">
+						<label class="form-control" id="prixOeuvrevente">${oeuvre.prixOeuvrevente}</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idProprietaire" class="col-sm-2 control-label">Propriétaire</label>
+					<div class="col-sm-3">
+						<label class="form-control" id="idProprietaire">
+						${oeuvre.proprietaire.nomProprietaire} ${oeuvre.proprietaire.prenomProprietaire}</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="datepicker" class="col-sm-2 control-label">Date</label>
+					<div class="col-sm-3">
+						<input type="text" name="txtDate" id="datepicker" value="${reservation.date}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="adherents" class="col-sm-2 control-label">Adhérent</label>
+					<div class="col-sm-3">
+						<select class="form-control" name="idAdherent" id="adherents">
+						<c:forEach items="${adherents}" var="item">
+							<option value="${item.idAdherent}">${item.nomAdherent} ${item.prenomAdherent}</option>
+						</c:forEach>
+						</select>
+					</div>
+				</div>
 			
-			<input type="hidden" name="idOeuvre" class="form-control" id="idOeuvre" value="${oeuvre.idOeuvre}">
-			
-			<div class="form-group">
-				<label for="titreOeuvre" class="col-sm-2 control-label">Titre</label>
-				<div class="col-sm-3">
-					<label class="form-control" id="titreOeuvre">${oeuvre.titreOeuvre}</label>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="prixOeuvrevente" class="col-sm-2 control-label">Prix</label>
-				<div class="col-sm-3">
-					<label class="form-control" id="prixOeuvrevente">${oeuvre.prixOeuvrevente}</label>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="idProprietaire" class="col-sm-2 control-label">Propriétaire</label>
-				<div class="col-sm-3">
-					<label class="form-control" id="idProprietaire">
-					${oeuvre.proprietaire.nomProprietaire} ${oeuvre.proprietaire.prenomProprietaire}</label>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="datepicker" class="col-sm-2 control-label">Date</label>
-				<div class="col-sm-3">
-					<input type="text" name="txtDate" id="datepicker" value="${reservation.date}">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="adherents" class="col-sm-2 control-label">Adhérent</label>
-				<div class="col-sm-3">
-					<select class="form-control" name="idAdherent" id="adherents">
-					<c:forEach items="${adherents}" var="item">
-						<option value="${item.idAdherent}">${item.nomAdherent} ${item.prenomAdherent}</option>
-					</c:forEach>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<a type="button" class="btn btn-danger" href="OeuvreVente?action=liste">Annuler</a>
-					<button type="submit" name="bt" class="btn btn-primary">Réserver</button>
-				</div>
-			</div>
-		</form>
+			</jsp:body>
+		</t:form>
 	
     </jsp:body>
 </t:layout>
