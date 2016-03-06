@@ -12,6 +12,20 @@
 		
 				<input type="hidden" name="idOeuvre" class="form-control" id="idOeuvre" value="${oeuvre.idOeuvre}">
 				
+                <c:if test="${oeuvres != null}">
+                    <div class="form-group">
+                        <label for="oeuvres" class="col-sm-2 control-label">Oeuvres en ventes</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="idOeuvre" id="oeuvre">
+                            <c:forEach items="${oeuvres}" var="item">
+                                <option value="${item.idOeuvre}"  onclick="changeId(${item.idOeuvre})">${item.titreOeuvre}</option>
+                            </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                </c:if>
+            
+                <c:if test="${oeuvre != null}">
 				<div class="form-group">
 					<label for="titreOeuvre" class="col-sm-2 control-label">Titre</label>
 					<div class="col-sm-3">
@@ -31,6 +45,8 @@
 						${oeuvre.proprietaire.nomProprietaire} ${oeuvre.proprietaire.prenomProprietaire}</label>
 					</div>
 				</div>
+                </c:if>
+                
 				<div class="form-group">
 					<label for="datepicker" class="col-sm-2 control-label">Date</label>
 					<div class="col-sm-3">

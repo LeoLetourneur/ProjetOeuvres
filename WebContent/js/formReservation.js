@@ -1,8 +1,8 @@
-$(function() {
+function initDatepicker() {
 	$('#datepicker').datepicker({
 		format: 'dd/mm/yyyy'
 	});
-});
+};
 
 function checkFields() {
 	var ok = true;
@@ -17,3 +17,9 @@ function checkFields() {
 	
 	return ok;
 }
+
+function changeId(newId) {
+	$('#idOeuvre').val(newId);
+}
+
+$( document ).ready( initDatepicker );

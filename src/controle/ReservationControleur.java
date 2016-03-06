@@ -88,6 +88,7 @@ public class ReservationControleur extends parentControleur {
 			request.setAttribute("module", FORM_RESERVATION);
 			request.setAttribute("action", "Ajouter");
 			request.setAttribute("vue", FORM);
+            //request.setAttribute("vueRetour", request.getParameter("vueRetour").toString());
 			destinationPage = "/"+FORM_RESERVATION+".jsp";
 		}
 		else if (MODIFIER.equals(actionName)) {
@@ -132,8 +133,8 @@ public class ReservationControleur extends parentControleur {
 				boolean ajout = false;
 				
 				Reservation reservation = service.consulterReservation(
-						Integer.parseInt(request.getParameter("idOeuvre")),
-						Integer.parseInt(request.getParameter("idAdherent")));
+						Integer.parseInt(request.getParameter("idOeuvre").toString()),
+						Integer.parseInt(request.getParameter("idAdherent").toString()));
 				
 				if(reservation == null) {
 					ajout = true;
