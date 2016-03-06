@@ -42,7 +42,7 @@ public class ReservationControleur extends parentControleur {
 			
 			super.processusTraiteRequete(request, response);
 			
-			request.setAttribute("tabTitle", "Liste des réservations");
+			request.setAttribute("tabTitle", "Liste des rÃ©servations");
 			
 			try {
 				ReservationService service = new ReservationService();
@@ -84,7 +84,7 @@ public class ReservationControleur extends parentControleur {
 				e.printStackTrace();
 			}
 			
-			request.setAttribute("tabTitle", "Nouvelle réservation");
+			request.setAttribute("tabTitle", "Nouvelle rï¿½servation");
 			request.setAttribute("action", "Ajouter");
 			destinationPage = "/"+FORM_RESERVATION+".jsp";
 		}

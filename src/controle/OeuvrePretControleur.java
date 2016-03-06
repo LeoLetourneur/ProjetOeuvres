@@ -37,7 +37,7 @@ public class OeuvrePretControleur extends parentControleur {
 			
 			super.processusTraiteRequete(request, response);
 			
-			request.setAttribute("tabTitle", "Liste des oeuvres en pret");
+			request.setAttribute("tabTitle", "Liste des prêts");
 			//request.setAttribute("module", LISTE_OEUVREPRET);
 			
 			try {

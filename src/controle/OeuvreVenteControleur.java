@@ -42,7 +42,7 @@ public class OeuvreVenteControleur extends parentControleur {
 			
 			super.processusTraiteRequete(request, response);
 			
-			request.setAttribute("tabTitle", "Liste des oeuvres en vente");
+			request.setAttribute("tabTitle", "Liste des ventes");
 			//request.setAttribute("module", LISTE_OEUVREVENTE);
 			
 			try {

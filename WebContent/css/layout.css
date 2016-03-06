@@ -1,19 +1,13 @@
 @CHARSET "UTF-8";
 
-#currentPageTitle {
-	display: inline-block;
-    line-height: 80px;
-    height: 80px;
-    vertical-align: top;
+.container {
+    width						: initial;
 }
 
 .navbar {
-	height 						: 100px;
-	//background-image			: url(../img/header.jpg);
-	//background-repeat			: repeat;
-	//background-size				: cover;
-	border-bottom				: none;//1px solid black;
-	padding : 10px;
+	height 						: 130px;
+	border-bottom				: 1px solid #339999;
+	padding 					: 10px;
 }
 
 .navbar-header {
@@ -27,7 +21,6 @@
 .navbar a
 {
 	text-decoration				: none;
-	//color 						: #86549d !important;
 	color 						: black !important;
 	font-weight					: bold;
 	text-align 					: center;
@@ -46,28 +39,32 @@
     border-color				: #ddd;
 }
 
+#currentPageTitle {
+	display						: inline-block;
+    line-height					: 80px;
+    height						: 80px;
+    vertical-align				: top;
+}
+
 .hexagone {
-	width : 100px;
-	height : 100px;
+	width 						: 100px;
+	height 						: 100px;
 } 
 
 .hexagone:hover {
-	opacity : 0.7;
+	opacity 					: 0.7;
 }
 
 #body 
 {
 	width 						: 92%;
 	margin-left 				: 4%;
-	margin-top 					: 70px;
+	margin-top 					: 50px;
 	min-height 					: 100%;
 	min-height 					: calc( 100% - 225px );
 }
 
 #footer {
-	//background-image			: url(../img/header.jpg);
-	//background-repeat			: no-repeat;
-	//background-size				: cover;
 	height						: 40px;
 	width 						: 100%;
 }

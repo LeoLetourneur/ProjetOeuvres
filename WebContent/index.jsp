@@ -39,7 +39,7 @@
 				</defs>
 				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgUser)"/>
 				
-				<text font-size="10" x="50" y="52" text-anchor="middle">Adherent</text>
+				<text font-size="10" x="50" y="52" text-anchor="middle">Adhérents</text>
 			</svg>
 			</a>
 			
@@ -52,7 +52,7 @@
 				</defs>
 				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgVente)"/>
 				
-				<text font-size="10" x="50" y="52" text-anchor="middle">Vente</text>
+				<text font-size="10" x="50" y="52" text-anchor="middle">Ventes</text>
 			</svg>
 			</a>
 			
@@ -74,7 +74,7 @@
 				</defs>
 				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgEchange)"/>
 				
-				<text font-size="10" x="50" y="52" text-anchor="middle">Pret</text>
+				<text font-size="10" x="50" y="52" text-anchor="middle">Prêts</text>
 			</svg>
 			</a>
 			
@@ -87,7 +87,7 @@
 				</defs>
 				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgReservation)"/>
 				
-				<text font-size="10" x="50" y="52" text-anchor="middle">Reservation</text>
+				<text font-size="10" x="50" y="52" text-anchor="middle">Réservations</text>
 			</svg>
 			</a>
 			
