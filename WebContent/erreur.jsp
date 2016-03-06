@@ -7,7 +7,7 @@
     <jsp:body>
     	<div id="bodyError">
 			<h1>${messageErreur}</h1>
-			<img id="imgError" src="img/erreur.jpg" alt="Erreur" class="img-responsive" height="300" width="300">
+			<img id="imgError" src="img/erreur.png" alt="Erreur" class="img-responsive" height="400" width="400">
    		</div>
     </jsp:body>
 </t:layout>
