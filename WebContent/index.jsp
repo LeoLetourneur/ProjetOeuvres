@@ -32,7 +32,12 @@
 			
 			<a href="Adherent?action=liste">
 			<svg class="hexagone" viewbox="5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				<defs>
+					<pattern id="imgUser" patternUnits="userSpaceOnUse" width="100" height="100">
+						<image xlink:href="img/user.png" x="-25" width="150" height="100" />
+					</pattern>
+				</defs>
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgUser)"/>
 				
 				<text font-size="10" x="50" y="52" text-anchor="middle">Adherent</text>
 			</svg>
@@ -40,7 +45,12 @@
 			
 			<a href="OeuvreVente?action=liste">
 			<svg class="hexagone rightHexagone" viewbox="-5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				<defs>
+					<pattern id="imgVente" patternUnits="userSpaceOnUse" width="100" height="100">
+						<image xlink:href="img/vente.png" x="-25" width="150" height="100" />
+					</pattern>
+				</defs>
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgVente)"/>
 				
 				<text font-size="10" x="50" y="52" text-anchor="middle">Vente</text>
 			</svg>
@@ -57,7 +67,12 @@
 
 			<a href="OeuvrePret?action=liste">
 			<svg class="hexagone" viewbox="5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				<defs>
+					<pattern id="imgEchange" patternUnits="userSpaceOnUse" width="100" height="100">
+						<image xlink:href="img/echange.png" x="-25" width="150" height="100" />
+					</pattern>
+				</defs>
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgEchange)"/>
 				
 				<text font-size="10" x="50" y="52" text-anchor="middle">Pret</text>
 			</svg>
@@ -65,7 +80,12 @@
 			
 			<a href="Reservation?action=liste">
 			<svg class="hexagone rightHexagone" viewbox="-5 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#339999"/>
+				<defs>
+					<pattern id="imgReservation" patternUnits="userSpaceOnUse" width="100" height="100">
+						<image xlink:href="img/reservation.png" x="-25" width="150" height="100" />
+					</pattern>
+				</defs>
+				<polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgReservation)"/>
 				
 				<text font-size="10" x="50" y="52" text-anchor="middle">Reservation</text>
 			</svg>
