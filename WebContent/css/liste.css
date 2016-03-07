@@ -10,10 +10,15 @@
 	width 						: 70px;
 }
 
+#buttonAdd .glyphicon{
+	position					: initial;
+}
+
 #dropdownDisplayPerPage {
 	display 					: inline-block;
 	float 						: right;
 	color 						: #339999;
+	position					: initial;
 }
 
 .buttonFooter {

@@ -9,7 +9,7 @@
 <div class="liste" id="liste">
 	
 	<div class="buttonHeader">
-		<a type="button" class="btn" href="${classe}?action=ajouter">
+		<a id="buttonAdd" type="button" class="btn" href="${classe}?action=ajouter">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> ${ajout}
 		</a>
 		
