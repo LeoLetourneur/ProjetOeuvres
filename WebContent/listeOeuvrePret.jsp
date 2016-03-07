@@ -27,7 +27,7 @@
 							<td>${item.titreOeuvre}</td>
 			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
 			                <td class="actionCol">
-			                	<a type="button" class="btn self-border" href="OeuvreVente?action=preter&idOeuvre=${item.idOeuvre}">
+			                	<a type="button" class="btn self-border" href="#">
 			               			<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
 			               		</a>
 			                	<a type="button" class="btn self-border" href="OeuvrePret?action=modifier&idOeuvre=${item.idOeuvre}">

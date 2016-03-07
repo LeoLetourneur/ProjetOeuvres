@@ -14,12 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AdherentService;
 import dao.OeuvreVenteService;
-import dao.ProprietaireService;
 import dao.ReservationService;
 import meserreurs.MonException;
 import metier.Adherent;
 import metier.Oeuvrevente;
-import metier.Proprietaire;
 import metier.Reservation;
 
 @WebServlet("/Reservation")
@@ -106,11 +104,7 @@ public class ReservationControleur extends parentControleur {
 				
 				Oeuvrevente oeuvre = oService.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvre").toString()));
 				request.setAttribute("oeuvre", oeuvre);
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
 			
-			try {
 				ReservationService service = new ReservationService();
 				Reservation reservationAModifier = service.consulterReservation(
 						Integer.parseInt(request.getParameter("idOeuvre")), 
@@ -131,15 +125,19 @@ public class ReservationControleur extends parentControleur {
 			try {
 				ReservationService service = new ReservationService();
 				boolean ajout = false;
+				Reservation reservation = null;
 				
-				Reservation reservation = service.consulterReservation(
-						Integer.parseInt(request.getParameter("idOeuvre").toString()),
-						Integer.parseInt(request.getParameter("idAdherent").toString()));
+				if(request.getParameter("oldOeuvre") != "" 
+				&& request.getParameter("oldAdherent") != "") {
+					reservation= service.consulterReservation(
+						Integer.parseInt(request.getParameter("oldOeuvre").toString()),
+						Integer.parseInt(request.getParameter("oldAdherent").toString()));
+				}
 				
 				if(reservation == null) {
 					ajout = true;
 					reservation = new Reservation();
-				}				
+				}
 				
 				OeuvreVenteService oService = new OeuvreVenteService();
 				Oeuvrevente oeuvre = oService.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvre").toString()));
@@ -151,7 +149,6 @@ public class ReservationControleur extends parentControleur {
 				try {
 					date = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("txtDate"));
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 
 				
@@ -163,7 +160,9 @@ public class ReservationControleur extends parentControleur {
 				if(ajout) {
 					service.insertReservation(reservation);
 				} else {
-					service.updateReservation(reservation);
+					int oldOeuvre = Integer.parseInt(request.getParameter("oldOeuvre").toString());
+					int oldAdherent = Integer.parseInt(request.getParameter("oldAdherent").toString());
+					service.updateReservation(reservation, oldOeuvre, oldAdherent);
 				}
 
 			} catch (MonException e) {

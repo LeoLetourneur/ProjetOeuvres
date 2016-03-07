@@ -29,9 +29,6 @@
 							<td>${item.prenomAdherent}</td>
 			                <td>${item.villeAdherent}</td>
 			                <td class="actionCol">
-			                	<a type="button" class="btn self-border" href="#">
-			               			<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-			               		</a>
 			                	<a type="button" class="btn self-border" data-toggle="modal" data-target="#emailModal">
 			                		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 			                	</a>

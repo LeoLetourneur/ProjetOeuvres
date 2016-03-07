@@ -6,9 +6,18 @@ function initDatepicker() {
 
 function checkFields() {
 	var ok = true;
-	if($('#datepicker').val() == "") {
+	
+	if($("#oeuvre").children("option:selected").val()=="-1") {
+		ok = false;
+		$("#dynamicText").text("Veuillez sélectionner une oeuvre");
+	}
+	else if($('#datepicker').val() == "") {
 		ok = false;
 		$("#dynamicText").text("Veuillez entrer une date");
+	}
+	else if($("#adherents").children("option:selected").val()=="-1") {
+		ok = false;
+		$("#dynamicText").text("Veuillez sélectionner un adhérent");
 	}
 	
 	if(!ok) {
@@ -18,8 +27,10 @@ function checkFields() {
 	return ok;
 }
 
-function changeId(newId) {
-	$('#idOeuvre').val(newId);
+function changeId() {
+	$('#idOeuvre').val($("#oeuvre").children("option:selected").val());
+	$('#prixOeuvrevente').text($("#oeuvre").children("option:selected").data('prix'));
+	$('#idProprietaire').text($("#oeuvre").children("option:selected").data('proprietaire'));
 }
 
 $( document ).ready( initDatepicker );

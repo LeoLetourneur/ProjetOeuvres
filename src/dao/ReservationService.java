@@ -29,16 +29,18 @@ public class ReservationService {
 		}
 	}
 	
-	public void updateReservation(Reservation reservation) throws MonException {
+	public void updateReservation(Reservation reservation, int oldOeuvre, int oldAdherent) throws MonException {
 		String mysql;
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
 			mysql = "UPDATE reservation SET " +
-					"date_reservation = '" + reservation.getDate() + "' " +
-					"WHERE id_oeuvrevente = " + reservation.getOeuvrevente().getIdOeuvre() +
-					" AND id_adherent = " + reservation.getAdherent().getIdAdherent();
-
+					" date_reservation = '" + new SimpleDateFormat("yyyy-MM-dd").format(reservation.getDate()) + "', " +
+					" id_oeuvrevente = '" + reservation.getOeuvrevente().getIdOeuvre() +  "', " +
+					" id_adherent = '" + reservation.getAdherent().getIdAdherent() +  "' " +
+					" WHERE id_oeuvrevente = " + oldOeuvre +
+					" AND id_adherent = " + oldAdherent;
+			
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
 			throw e;
