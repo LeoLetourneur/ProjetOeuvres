@@ -92,7 +92,6 @@ public class ReservationService {
 				try {
 					date = new SimpleDateFormat("yyyy-mm-dd").parse(rs.get(index + 2).toString());
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 
 				

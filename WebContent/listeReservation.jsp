@@ -25,7 +25,7 @@
 						<tr>
 							<td>${item.oeuvrevente.titreOeuvre}</td>
 							<td>${item.adherent.nomAdherent} ${item.adherent.prenomAdherent}</td>
-							<td>${item.date}</td>
+							<td><fmt:formatDate value="${item.date}" pattern="dd / MM / yyyy" /></td>
 			                <td class="actionCol">
 			                	<a type="button" class="btn self-border" href="Reservation?action=modifier&idOeuvre=${item.oeuvrevente.idOeuvre}&idAdherent=${item.adherent.idAdherent}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
