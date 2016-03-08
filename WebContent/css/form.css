@@ -1,3 +1,37 @@
+.titleForm {
+	text-align 				: center;
+	margin-bottom 			: 40px;
+}
+
 #alertMsg {
 	display 				: none;
+}
+
+.form-horizontal {
+	width 					: 50%;
+	margin 					: auto;
+}
+
+.control-label {
+    text-align				: left !important;
+}
+
+.buttonForm {
+	margin-top 				: 40px;
+}
+
+.btn-submit {
+    color					: black;
+    background-color		: #339999;
+    border-color			: #339999;
+    float					: right;
+}
+
+.btn-submit:hover {
+	opacity 				: 0.7;
+	color					: white;
+}
+
+.btn-danger {
+    color					: black;
 }

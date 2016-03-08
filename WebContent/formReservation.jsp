@@ -19,7 +19,7 @@
   				<c:when test="${oeuvres != null}">
                     <div class="form-group">
                         <label for="oeuvres" class="col-sm-2 control-label">Oeuvres en ventes</label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-10">
                             <select class="form-control" name="idOeuvre" id="oeuvre" onchange="changeId()">
                             	<option value="-1" selected disabled>Sélectionnez une oeuvre</option>
                             <c:forEach items="${oeuvres}" var="item">
@@ -36,7 +36,7 @@
   				<c:otherwise>
   					<div class="form-group">
 					<label for="titreOeuvre" class="col-sm-2 control-label">Titre</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<label class="form-control" id="titreOeuvre">${oeuvre.titreOeuvre}</label>
 					</div>
 				</div>
@@ -45,13 +45,13 @@
             	
 				<div class="form-group">
 					<label for="prixOeuvrevente" class="col-sm-2 control-label">Prix</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<label class="form-control" id="prixOeuvrevente">${oeuvre.prixOeuvrevente}</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="idProprietaire" class="col-sm-2 control-label">Propriétaire</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<label class="form-control" id="idProprietaire">
 						${oeuvre.proprietaire.nomProprietaire} ${oeuvre.proprietaire.prenomProprietaire}</label>
 					</div>
@@ -59,7 +59,7 @@
                 
 				<div class="form-group">
 					<label for="datepicker" class="col-sm-2 control-label">Date</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<fmt:formatDate var="fmtDate" value="${reservation.date}" pattern="dd/MM/yyyy"/>
 						<input type="text" name="txtDate" id="datepicker" value="${fmtDate}">
 					</div>
@@ -67,7 +67,7 @@
 				
 				<div class="form-group">
 					<label for="adherents" class="col-sm-2 control-label">Adhérent</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<select class="form-control" name="idAdherent" id="adherents">
 							<option value="-1" selected disabled>Sélectionnez un adhérent</option>
 						<c:forEach items="${adherents}" var="item">

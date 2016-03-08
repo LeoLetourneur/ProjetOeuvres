@@ -6,7 +6,7 @@
 
 <div class="form" id="form">
 	
-	<h1 align="center">${titre}</h1>
+	<h1 class="titleForm">${titre}</h1>
 	
 	<div id="alertMsg" class="alert alert-danger">
 		<strong>Erreur !</strong> <span id="dynamicText"></span>
@@ -18,11 +18,9 @@
 			<jsp:doBody/>
 		</div>
 		
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<a type="button" class="btn btn-danger" href="${classe}?action=liste">Annuler</a>
-				<button type="submit" name="bt" class="btn btn-primary">${action}</button>
-			</div>
+		<div class="buttonForm">
+			<a type="button" class="btn btn-danger" href="${classe}?action=liste">Annuler</a>
+			<button type="submit" name="bt" class="btn btn-submit">${action}</button>
 		</div>
 	</form>
 	

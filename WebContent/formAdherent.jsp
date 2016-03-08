@@ -13,21 +13,21 @@
 				
 				<div class="form-group">
 					<label for="nomAdherent" class="col-sm-2 control-label">Nom</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<input type="text" name="txtnom" class="form-control"
 							id="nomAdherent" placeholder="Nom" value="${adherent.nomAdherent}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="prenomAdherent" class="col-sm-2 control-label">Prénom</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<input type="text" name="txtprenom" class="form-control"
 							id="prenomAdherent" placeholder="Prénom" value="${adherent.prenomAdherent}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="villeAdherent" class="col-sm-2 control-label">Ville</label>
-					<div class="col-sm-3">
+					<div class="col-sm-10">
 						<input type="text" name="txtville" class="form-control"
 							id="villeAdherent" placeholder="Ville" value="${adherent.villeAdherent}">
 					</div>
