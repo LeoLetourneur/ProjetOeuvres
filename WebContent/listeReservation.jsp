@@ -30,7 +30,7 @@
 			                	<a type="button" class="btn self-border" href="Reservation?action=modifier&idOeuvre=${item.oeuvrevente.idOeuvre}&idAdherent=${item.adherent.idAdherent}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-			                	<a type="button" class="btn self-border" href="Reservation?action=supprimer&idOeuvre=${item.oeuvrevente.idOeuvre}&idAdherent=${item.adherent.idAdherent}">
+			               		<a type="button" class="btn btn self-border" onclick="deleteReservation(${item.oeuvrevente.idOeuvre},${item.adherent.idAdherent})" data-toggle="modal" data-target="#confirmationModal">
 			                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>
 		                	</td>
@@ -40,6 +40,12 @@
 		
 			</jsp:body>
 		</t:liste>
+		
+		<t:modal modalTitle="Confirmation" modalAccept="Valider" modalId="confirmationModal" modalAction="confirmDelete()">
+			<jsp:body>
+				Etes-vous sur de vouloir supprimer cette réservation ?
+			</jsp:body>
+		</t:modal>
 		
     </jsp:body>
 </t:layout>

@@ -176,8 +176,8 @@ public class ReservationControleur extends parentControleur {
 			
 			try {
 				ReservationService service = new ReservationService();
-				int idOeuvre = Integer.parseInt(request.getParameter("idOeuvre"));
-				int idAdherent = Integer.parseInt(request.getParameter("idAdherent"));
+				int idOeuvre = Integer.parseInt(request.getParameter("idSelected"));
+				int idAdherent = Integer.parseInt(request.getParameter("idSelected2"));
 				service.deleteReservation(idOeuvre, idAdherent);
 
 			} catch (MonException e) {

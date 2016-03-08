@@ -1,6 +1,7 @@
 <%@attribute name="modalId" %>
 <%@attribute name="modalTitle" %>
 <%@attribute name="modalAccept" %>
+<%@attribute name="modalAction" %>
 
 <div class="modal fade" id="${modalId}" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
@@ -16,8 +17,8 @@
 				<jsp:doBody/>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-				<button type="button" class="btn btn-primary">${modalAccept}</button>
+				<button type="button" class="btn self-border" data-dismiss="modal">Annuler</button>
+				<button type="button" class="btn self-border" onclick="${modalAction}">${modalAccept}</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->

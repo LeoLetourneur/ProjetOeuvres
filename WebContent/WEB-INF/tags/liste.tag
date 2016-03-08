@@ -32,6 +32,12 @@
 		</div>
 	</div>
 	
+	<form id="deleteForm" class="form-horizontal" method="post" action="${classe}?action=supprimer">
+	<input type="hidden" name="idSelected" class="form-control" id="idSelected">
+	<input type="hidden" name="idSelected2" class="form-control" id="idSelected2">
+	</form>
+				
+	
 	<div class="table-body">
 		<jsp:doBody/>
 	</div>

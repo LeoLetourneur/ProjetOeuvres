@@ -35,8 +35,7 @@
 			                	<a type="button" class="btn self-border" href="Adherent?action=modifier&idAdherent=${item.idAdherent}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-								<a type="button" class="btn self-border" href="Adherent?action=supprimer&idAdherent=${item.idAdherent}">
-		<!-- 						<a type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal"> -->
+								<a type="button" class="btn btn self-border" onclick="deleteItem(${item.idAdherent})" data-toggle="modal" data-target="#confirmationModal">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>
 			                </td>
@@ -64,7 +63,7 @@
 		    </jsp:body>
 		</t:modal>
 		
-		<t:modal modalTitle="Confirmation" modalAccept="Valider" modalId="confirmationModal">
+		<t:modal modalTitle="Confirmation" modalAccept="Valider" modalId="confirmationModal" modalAction="confirmDelete()">
 			<jsp:body>
 				Etes-vous sur de vouloir supprimer cet adhérent ?
 			</jsp:body>

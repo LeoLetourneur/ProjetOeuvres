@@ -132,7 +132,7 @@ public class OeuvrePretControleur extends parentControleur {
 		else if (SUPPRIMER.equals(actionName)) {
 			try {
 				OeuvrePretService service = new OeuvrePretService();
-				int id = Integer.parseInt(request.getParameter("idOeuvre"));
+				int id = Integer.parseInt(request.getParameter("idSelected"));
 				service.deleteOeuvrePret(id);
 				
 			} catch (MonException e) {

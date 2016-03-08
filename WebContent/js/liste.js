@@ -26,4 +26,17 @@ function reloadList() {
 	$("#changeTab").submit();
 }
 
+function deleteItem(id) {
+	$("#idSelected").val(id);
+}
+
+function deleteReservation(idOeuvre,idAdherent) {
+	$("#idSelected").val(idOeuvre);
+	$("#idSelected2").val(idAdherent);
+}
+
+function confirmDelete() {
+	$("#deleteForm").submit();
+}
+
 $( document ).ready( initialisePagination );

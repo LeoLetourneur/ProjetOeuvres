@@ -118,7 +118,7 @@ public class AdherentControleur extends parentControleur {
 			
 			try {
 				AdherentService unService = new AdherentService();
-				int id = Integer.parseInt(request.getParameter("idAdherent"));
+				int id = Integer.parseInt(request.getParameter("idSelected"));
 				unService.deleteAdherent(id);
 
 			} catch (MonException e) {

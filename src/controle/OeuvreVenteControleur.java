@@ -143,7 +143,7 @@ public class OeuvreVenteControleur extends parentControleur {
 			
 			try {
 				OeuvreVenteService service = new OeuvreVenteService();
-				int id = Integer.parseInt(request.getParameter("idOeuvre"));
+				int id = Integer.parseInt(request.getParameter("idSelected"));
 				service.deleteOeuvreVente(id);
 
 			} catch (MonException e) {
