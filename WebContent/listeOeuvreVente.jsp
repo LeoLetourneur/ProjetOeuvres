@@ -37,7 +37,7 @@
 			                	<a type="button" class="btn self-border" href="OeuvreVente?action=modifier&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-			               		<a type="button" class="btn btn self-border" onclick="deleteItem(${item.idOeuvre})" data-toggle="modal" data-target="#confirmationModal">
+			               		<a type="button" class="btn btndel self-border" data-id="${item.idOeuvre}" data-toggle="modal" data-target="#confirmationModal">
 			                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>
 		                	</td>

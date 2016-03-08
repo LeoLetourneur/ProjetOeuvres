@@ -39,7 +39,7 @@ public class AdherentControleur extends parentControleur {
 			super.processusTraiteRequete(request, response);
 			
 			request.setAttribute("tabTitle", "Liste des adhérents");
-			//request.setAttribute("module", LISTE_ADHERENT);
+			request.setAttribute("module", LISTE_ADHERENT);
 			
 			try {
 				AdherentService service = new AdherentService();

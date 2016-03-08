@@ -27,13 +27,13 @@
 							<td>${item.titreOeuvre}</td>
 			                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
 			                <td class="actionCol">
-			                	<a type="button" class="btn self-border" href="#">
+			                	<a type="button" class="btn self-border" disabled="disabled" href="#">
 			               			<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
 			               		</a>
 			                	<a type="button" class="btn self-border" href="OeuvrePret?action=modifier&idOeuvre=${item.idOeuvre}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-			               		<a type="button" class="btn btn self-border" onclick="deleteItem(${item.idOeuvre})" data-toggle="modal" data-target="#confirmationModal">
+			               		<a type="button" class="btn btndel self-border" data-id="${item.idOeuvre}" data-toggle="modal" data-target="#confirmationModal">
 			                		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>
 			               	</td>

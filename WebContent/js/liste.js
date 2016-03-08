@@ -8,6 +8,8 @@ function initialisePagination() {
 	
 	$(".pageButton").click( changePage );
 	$(".parPageButton").click( changeNumberPerPage );
+	
+	$(".btndel").click( deleteItem );
 }
 
 function changePage() {
@@ -26,13 +28,9 @@ function reloadList() {
 	$("#changeTab").submit();
 }
 
-function deleteItem(id) {
-	$("#idSelected").val(id);
-}
-
-function deleteReservation(idOeuvre,idAdherent) {
-	$("#idSelected").val(idOeuvre);
-	$("#idSelected2").val(idAdherent);
+function deleteItem() {
+	$("#idSelected").val($(this).data('id'));
+	$("#idSelected2").val($(this).data('id2'));
 }
 
 function confirmDelete() {
