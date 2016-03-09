@@ -4,6 +4,19 @@
     width						: initial;
 }
 
+#background {
+	position					: fixed;
+	top							: 0;
+	left						: 0;
+	width						: 100%;
+	height						: 100%;
+	background-image			: url(../img/background.png);
+	background-attachment		: fixed;
+	background-size				: cover;
+	opacity						: 0.3;
+	z-index						: -1;
+}
+
 .navbar {
 	height 						: 130px;
 	border-bottom				: none;
@@ -17,7 +30,6 @@
 .navbar-nav {
     margin						: 0px -15px;
     text-align 					: center;
-    background-color 			: white;
 }
 
 .navbar a

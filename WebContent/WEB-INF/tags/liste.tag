@@ -38,7 +38,7 @@
 	</form>
 				
 	
-	<div class="table-body">
+	<div class="table-body table-white">
 		<jsp:doBody/>
 	</div>
 		

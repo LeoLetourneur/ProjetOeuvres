@@ -30,7 +30,7 @@
 	</head>
 	
 	<body>
-	
+		<div id="background"></div>
 		<nav class="navbar" role="navigation">
             <div class="container">
                 <div class="navbar-header">
