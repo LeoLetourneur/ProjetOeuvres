@@ -52,6 +52,8 @@ public class OeuvreVenteControleur extends parentControleur {
 				int nombrePage = (int) Math.ceil(nombreOeuvre/nombreParPage);
 				request.setAttribute("nbPage", nombrePage);
 				
+				verifierPage(request, nombrePage);
+				
 				List<Oeuvrevente> liste = service.consulterListeOeuvresVentes((int)page-1,(int)nombreParPage);
 				request.setAttribute("oeuvres", liste);
 

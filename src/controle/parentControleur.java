@@ -70,6 +70,17 @@ public abstract class parentControleur extends HttpServlet {
 			request.setAttribute("currentNumberPerPage", nombreParPage);
 			request.setAttribute("vue", LISTE);
 		}
-
+	}
+	
+	/*
+	 * Dans le cas où l'utilisateur affiche plus d'élément par page
+	 * il faut vérifier que le numéro de la page actuel est toujours disponible
+	 * sinon on retourne à la page 1
+	 */
+	protected void verifierPage(HttpServletRequest request, int nombrePage) {
+		if((int)request.getAttribute("currentPage") > nombrePage) {
+			page = 1;
+			request.setAttribute("currentPage", page);
+		}
 	}
 }

@@ -47,6 +47,8 @@ public class AdherentControleur extends parentControleur {
 				float nombreAdherent = Float.parseFloat(listeTotal.size()+"");
 				int nombrePage = (int) Math.ceil(nombreAdherent/nombreParPage);
 				request.setAttribute("nbPage", nombrePage);
+
+				verifierPage(request, nombrePage);
 				
 				List<Adherent> liste = service.consulterListeAdherents((int)page-1,(int)nombreParPage);
 				request.setAttribute("adherents", liste);

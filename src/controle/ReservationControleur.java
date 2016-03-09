@@ -49,6 +49,8 @@ public class ReservationControleur extends parentControleur {
 				int nombrePage = (int) Math.ceil(nombreReservation/nombreParPage);
 				request.setAttribute("nbPage", nombrePage);
 				
+				verifierPage(request, nombrePage);
+				
 				List<Reservation> liste = service.consulterListeReservations((int)page-1,(int)nombreParPage);
 				request.setAttribute("reservations", liste);
 
