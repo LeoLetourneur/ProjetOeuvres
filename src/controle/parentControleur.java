@@ -2,6 +2,7 @@ package controle;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +54,8 @@ public abstract class parentControleur extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String actionName = request.getParameter(ACTION_TYPE);
+		String destinationPage = ERROR_PAGE;
+		
 		if (LISTE.equals(actionName)) {
 			
 			page = 1;
@@ -69,8 +72,46 @@ public abstract class parentControleur extends HttpServlet {
 			request.setAttribute("currentPage", page);
 			request.setAttribute("currentNumberPerPage", nombreParPage);
 			request.setAttribute("vue", LISTE);
+			
+			destinationPage = this.displayListe(request);
 		}
+		else if (AJOUTER.equals(actionName)) {
+			
+			request.setAttribute("vue", FORM);
+			request.setAttribute("action", "Ajouter");
+			destinationPage = this.displayAddForm(request);
+		}
+		else if (MODIFIER.equals(actionName)) {
+			request.setAttribute("vue", FORM);
+			request.setAttribute("action", "Modifier");
+			destinationPage = this.displayUpdateForm(request);
+		}
+		else if (INSERER.equals(actionName)) {
+			
+			destinationPage = this.insertNewObject(request);
+		}
+		else if (SUPPRIMER.equals(actionName)) {
+			
+			destinationPage = this.deleteObject(request);
+		}
+		else {
+			
+			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";
+			request.setAttribute(ERROR_KEY, messageErreur);
+			request.setAttribute("tabTitle", "Erreur 404");
+			request.setAttribute("module", "erreur");
+		}
+		
+		// Redirection vers la page jsp appropriee
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
+		dispatcher.forward(request, response);
 	}
+	
+	protected abstract String displayListe(HttpServletRequest request);
+	protected abstract String displayAddForm(HttpServletRequest request);
+	protected abstract String displayUpdateForm(HttpServletRequest request);
+	protected abstract String insertNewObject(HttpServletRequest request);
+	protected abstract String deleteObject(HttpServletRequest request);
 	
 	/*
 	 * Dans le cas où l'utilisateur affiche plus d'élément par page

@@ -1,22 +1,13 @@
 package controle;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import metier.*;
-import dao.AdherentService;
 import dao.OeuvreVenteService;
 import dao.ProprietaireService;
-import dao.ReservationService;
 import meserreurs.*;
 
 /**
@@ -33,137 +24,114 @@ public class OeuvreVenteControleur extends parentControleur {
 		super();
 	}
 	
-	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String actionName = request.getParameter(ACTION_TYPE);
-		String destinationPage = ERROR_PAGE;
+	protected String displayListe(HttpServletRequest request) {
+			
+		request.setAttribute("tabTitle", "Liste des ventes");
+		//request.setAttribute("module", LISTE_OEUVREVENTE);
 		
-		if (LISTE.equals(actionName)) {
+		try {
+			OeuvreVenteService service = new OeuvreVenteService();
+			List<Oeuvrevente> listeTotal = service.consulterListeOeuvresVentes();
+			float nombreOeuvre = Float.parseFloat(listeTotal.size()+"");
+			int nombrePage = (int) Math.ceil(nombreOeuvre/nombreParPage);
+			request.setAttribute("nbPage", nombrePage);
 			
-			super.processusTraiteRequete(request, response);
+			verifierPage(request, nombrePage);
 			
-			request.setAttribute("tabTitle", "Liste des ventes");
-			//request.setAttribute("module", LISTE_OEUVREVENTE);
-			
-			try {
-				OeuvreVenteService service = new OeuvreVenteService();
-				List<Oeuvrevente> listeTotal = service.consulterListeOeuvresVentes();
-				float nombreOeuvre = Float.parseFloat(listeTotal.size()+"");
-				int nombrePage = (int) Math.ceil(nombreOeuvre/nombreParPage);
-				request.setAttribute("nbPage", nombrePage);
-				
-				verifierPage(request, nombrePage);
-				
-				List<Oeuvrevente> liste = service.consulterListeOeuvresVentes((int)page-1,(int)nombreParPage);
-				request.setAttribute("oeuvres", liste);
-
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-
-			destinationPage = "/"+LISTE_OEUVREVENTE+".jsp";
+			List<Oeuvrevente> liste = service.consulterListeOeuvresVentes((int)page-1,(int)nombreParPage);
+			request.setAttribute("oeuvres", liste);
+	
+		} catch (MonException e) {
+			e.printStackTrace();
 		}
-		else if (AJOUTER.equals(actionName)) {
+	
+		return "/"+LISTE_OEUVREVENTE+".jsp";
+	}
+	
+	protected String displayAddForm(HttpServletRequest request) {
 			
-			try {
-				ProprietaireService service = new ProprietaireService();
-				List<Proprietaire> liste;
-				liste = service.consulterListeProprietaires();
-				request.setAttribute("proprietaires", liste);
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-			
-			request.setAttribute("tabTitle", "Nouvel oeuvre à vendre");
-			request.setAttribute("module", FORM_OEUVREVENTE);
-			request.setAttribute("action", "Ajouter");
-			request.setAttribute("vue", FORM);
-			destinationPage = "/"+FORM_OEUVREVENTE+".jsp";
-		}
-		else if (MODIFIER.equals(actionName)) {
-			
-			try {
-				ProprietaireService service = new ProprietaireService();
-				List<Proprietaire> liste;
-				liste = service.consulterListeProprietaires();
-				request.setAttribute("proprietaires", liste);
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-			
-			try {
-				OeuvreVenteService service = new OeuvreVenteService();
-				Oeuvrevente oeuvreAModifier = service.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvre")));
-				request.setAttribute("oeuvre", oeuvreAModifier);
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-			request.setAttribute("tabTitle", "Modification oeuvre vente");
-			request.setAttribute("module", FORM_OEUVREVENTE);
-			request.setAttribute("action", "Modifier");
-			request.setAttribute("vue", FORM);
-			destinationPage = "/"+FORM_OEUVREVENTE+".jsp";
-		} 
-		else if (INSERER.equals(actionName)) {
-			
-			try {
-				OeuvreVenteService service = new OeuvreVenteService();
-				
-				int id = -1;
-				if(request.getParameter("idOeuvre") != null && request.getParameter("idOeuvre") != "") {
-					id = Integer.parseInt(request.getParameter("idOeuvre"));
-				}
-				
-				Oeuvrevente oeuvre;
-				if(id > 0) {
-					oeuvre = service.consulterOeuvrevente(id);
-				} else {
-					oeuvre = new Oeuvrevente();
-				}
-				
-				ProprietaireService serviceP = new ProprietaireService();
-				Proprietaire proprietaire = serviceP.consulterProprietaire(Integer.parseInt(request.getParameter("txtProprietaire")));
-				
-				oeuvre.setEtatOeuvrevente("L");
-				oeuvre.setTitreOeuvre(request.getParameter("txtTitre"));
-				oeuvre.setPrixOeuvrevente(Float.parseFloat(request.getParameter("txtPrix")));
-				oeuvre.setProprietaire(proprietaire);
-				
-				if(id > 0) {
-					service.updateOeuvreVente(oeuvre);
-				} else {
-					service.insertOeuvreVente(oeuvre);
-				}
-
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-			
-			destinationPage = "/OeuvreVente?action="+LISTE;
-		}
-		else if (SUPPRIMER.equals(actionName)) {
-			
-			try {
-				OeuvreVenteService service = new OeuvreVenteService();
-				int id = Integer.parseInt(request.getParameter("idSelected"));
-				service.deleteOeuvreVente(id);
-
-			} catch (MonException e) {
-				e.printStackTrace();
-			}
-			
-			destinationPage = "/OeuvreVente?action="+LISTE;
-		}
-		else {
-			String messageErreur = "Erreur 404 - [" + actionName + "] Ressource introuvable !";
-			request.setAttribute(ERROR_KEY, messageErreur);
-			request.setAttribute("tabTitle", "Erreur 404");
-			request.setAttribute("module", "erreur");
+		try {
+			ProprietaireService service = new ProprietaireService();
+			List<Proprietaire> liste;
+			liste = service.consulterListeProprietaires();
+			request.setAttribute("proprietaires", liste);
+		} catch (MonException e) {
+			e.printStackTrace();
 		}
 		
-		// Redirection vers la page jsp appropriee
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
-		dispatcher.forward(request, response);
+		request.setAttribute("tabTitle", "Nouvel oeuvre à vendre");
+		request.setAttribute("module", FORM_OEUVREVENTE);
+		return "/"+FORM_OEUVREVENTE+".jsp";
+	} 
 
+	protected String displayUpdateForm(HttpServletRequest request) {
+			
+		try {
+			ProprietaireService service = new ProprietaireService();
+			List<Proprietaire> liste;
+			liste = service.consulterListeProprietaires();
+			request.setAttribute("proprietaires", liste);
+		
+			OeuvreVenteService serviceO = new OeuvreVenteService();
+			Oeuvrevente oeuvreAModifier = serviceO.consulterOeuvrevente(Integer.parseInt(request.getParameter("idOeuvre")));
+			request.setAttribute("oeuvre", oeuvreAModifier);
+		} catch (MonException e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("tabTitle", "Modification oeuvre vente");
+		request.setAttribute("module", FORM_OEUVREVENTE);
+		return "/"+FORM_OEUVREVENTE+".jsp";
+	}
+	
+	protected String insertNewObject(HttpServletRequest request) {
+		
+		try {
+			OeuvreVenteService service = new OeuvreVenteService();
+			
+			int id = -1;
+			if(request.getParameter("idOeuvre") != null && request.getParameter("idOeuvre") != "") {
+				id = Integer.parseInt(request.getParameter("idOeuvre"));
+			}
+			
+			Oeuvrevente oeuvre;
+			if(id > 0) {
+				oeuvre = service.consulterOeuvrevente(id);
+			} else {
+				oeuvre = new Oeuvrevente();
+			}
+			
+			ProprietaireService serviceP = new ProprietaireService();
+			Proprietaire proprietaire = serviceP.consulterProprietaire(Integer.parseInt(request.getParameter("txtProprietaire")));
+			
+			oeuvre.setEtatOeuvrevente("L");
+			oeuvre.setTitreOeuvre(request.getParameter("txtTitre"));
+			oeuvre.setPrixOeuvrevente(Float.parseFloat(request.getParameter("txtPrix")));
+			oeuvre.setProprietaire(proprietaire);
+			
+			if(id > 0) {
+				service.updateOeuvreVente(oeuvre);
+			} else {
+				service.insertOeuvreVente(oeuvre);
+			}
+
+		} catch (MonException e) {
+			e.printStackTrace();
+		}
+		
+		return "/OeuvreVente?action="+LISTE;
+	}
+	
+	protected String deleteObject(HttpServletRequest request) {
+
+		try {
+			OeuvreVenteService service = new OeuvreVenteService();
+			int id = Integer.parseInt(request.getParameter("idSelected"));
+			service.deleteOeuvreVente(id);
+
+		} catch (MonException e) {
+			e.printStackTrace();
+		}
+		
+		return "/OeuvreVente?action="+LISTE;
 	}
 }
