@@ -17,6 +17,8 @@
 				<polygon id="hexLoic" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgLoic)"/>
 			</svg>
 			
+			<h3>Loïc GERLAND 4A Info</h3>
+			
 			<svg id="hexagoneLeo" class="rightHexagone" viewbox="0 0 150 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<pattern id="imgLeo" patternUnits="userSpaceOnUse" width="100" height="100">
@@ -25,6 +27,8 @@
 				</defs>
 				<polygon id="hexLeo" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#imgLeo)"/>
 			</svg>
+			
+			<h3>Léo LETOURNEUR 4A Info</h3>
 		</div>
     </jsp:body>
 </t:layout>
