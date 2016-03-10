@@ -101,7 +101,7 @@ public class OeuvrePretControleur extends parentControleur {
 			} else {
 				oeuvrePret = new Oeuvrepret();
 			}
-			oeuvrePret.setTitreOeuvre(request.getParameter("txtTitre"));
+			oeuvrePret.setTitreOeuvre(request.getParameter("txtTitre").replace("'", "\\\'"));
 			
 			ProprietaireService pService = new ProprietaireService();
 			Proprietaire proprietaire = pService.consulterProprietaire(Integer.parseInt(request.getParameter("txtProprietaire")));

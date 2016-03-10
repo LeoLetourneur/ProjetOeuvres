@@ -104,7 +104,7 @@ public class OeuvreVenteControleur extends parentControleur {
 			Proprietaire proprietaire = serviceP.consulterProprietaire(Integer.parseInt(request.getParameter("txtProprietaire")));
 			
 			oeuvre.setEtatOeuvrevente("L");
-			oeuvre.setTitreOeuvre(request.getParameter("txtTitre"));
+			oeuvre.setTitreOeuvre(request.getParameter("txtTitre").replace("'", "\\\'"));
 			oeuvre.setPrixOeuvrevente(Float.parseFloat(request.getParameter("txtPrix")));
 			oeuvre.setProprietaire(proprietaire);
 			

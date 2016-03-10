@@ -87,9 +87,9 @@ public class AdherentControleur extends parentControleur {
 			} else {
 				adherent = new Adherent();
 			}
-			adherent.setNomAdherent(request.getParameter("txtnom"));
-			adherent.setPrenomAdherent(request.getParameter("txtprenom"));
-			adherent.setVilleAdherent(request.getParameter("txtville"));
+			adherent.setNomAdherent(request.getParameter("txtnom").replace("'", "\\\'"));
+			adherent.setPrenomAdherent(request.getParameter("txtprenom").replace("'", "\\\'"));
+			adherent.setVilleAdherent(request.getParameter("txtville").replace("'", "\\\'"));
 			
 			if(id > 0) {
 				unService.updateAdherent(adherent);
