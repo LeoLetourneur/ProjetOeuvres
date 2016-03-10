@@ -1,8 +1,17 @@
 #informations {
 	width : 400px;
-	margin: auto;
+	margin : auto;
 }
 
-.rightHexagone {
+.titre {
+	text-align : center;
+	margin-bottom : 50px;
+}
+
+.left {
+	float: left;
+}
+
+.right {
 	float : right;
 }
