@@ -1,15 +1,27 @@
 #informations {
-	width : 400px;
-	margin : auto;
+	width : 800px;
+	margin: auto;
 }
 
 .titre {
-	text-align : center;
-	margin-bottom : 50px;
+	margin-left: 31%;
 }
 
-.left {
-	float: left;
+.hexagonePhoto {
+	width: 400px;
+	height: 400px;
+}
+
+.hexagonePhoto text {
+	display 				: none;
+}
+
+.hexagonePhoto text.display {
+	display 				: block;
+}
+
+.hexagonePhoto:hover {
+	opacity 				: 0.7;
 }
 
 .right {
