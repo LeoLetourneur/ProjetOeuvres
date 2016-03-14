@@ -60,3 +60,13 @@ a,
     height						: 70px;
     line-height					: 70px !important;
 }
+
+#textAreaMail {
+    display						: inline-block;
+    width						: 70%;
+}
+
+.btn-modal {
+	background-color 			: #339999;
+	color 						: white !important;
+}

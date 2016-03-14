@@ -17,8 +17,8 @@
 				<jsp:doBody/>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn self-border" data-dismiss="modal">Annuler</button>
-				<button type="button" class="btn self-border" onclick="${modalAction}">${modalAccept}</button>
+				<button type="button" class="btn btn-modal" data-dismiss="modal">Annuler</button>
+				<button type="button" class="btn btn-modal" onclick="${modalAction}">${modalAccept}</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->

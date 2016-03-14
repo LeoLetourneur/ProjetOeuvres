@@ -29,13 +29,14 @@
 							<td>${item.prenomAdherent}</td>
 			                <td>${item.villeAdherent}</td>
 			                <td class="actionCol">
-			                	<a type="button" class="btn btnmail self-border" data-nom="${item.nomAdherent} ${item.prenomAdherent}" data-toggle="modal" data-target="#emailModal">
+			                	<a type="button" class="btn btnmail self-border" title="Envoyer un mail" 
+			                		data-nom="${item.nomAdherent} ${item.prenomAdherent}" data-toggle="modal" data-target="#emailModal">
 			                		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 			                	</a>
-			                	<a type="button" class="btn self-border" href="Adherent?action=modifier&idAdherent=${item.idAdherent}">
+			                	<a type="button" class="btn self-border" title="Modifier" href="Adherent?action=modifier&idAdherent=${item.idAdherent}">
 			               			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			               		</a>
-								<a type="button" class="btn btndel self-border" data-id="${item.idAdherent}" data-toggle="modal" data-target="#confirmationModal">
+								<a type="button" class="btn btndel self-border" title="Supprimer" data-id="${item.idAdherent}" data-toggle="modal" data-target="#confirmationModal">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			                	</a>
 			                </td>
@@ -61,7 +62,7 @@
 		    </div>
 		    <div class="row">
 		    	<label class="col-lg-2">Corps :</label>
-		    	<textarea rows="6" cols="70" placeholder="Texte du message"></textarea>
+		    	<textarea id="textAreaMail" rows="6" cols="70" placeholder="Texte du message"></textarea>
 		    </div>
 		    </jsp:body>
 		</t:modal>
