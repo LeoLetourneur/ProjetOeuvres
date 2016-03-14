@@ -1,15 +1,16 @@
 #informations {
-	width : 800px;
-	margin: auto;
+	max-width 				: 800px;
+	margin					: auto;
 }
 
 .titre {
-	margin-left: 31%;
+	text-align				: center;
+	margin-bottom 			: 40px;
 }
 
 .hexagonePhoto {
-	width: 400px;
-	height: 400px;
+	width					: 300px;
+	height					: 300px;
 }
 
 .hexagonePhoto text {
@@ -25,5 +26,5 @@
 }
 
 .right {
-	float : right;
+	float 					: right;
 }

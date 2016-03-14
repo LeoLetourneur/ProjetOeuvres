@@ -11,7 +11,7 @@
     <jsp:body>
     	<h1 class="titre">Développeurs du site </h1>
     	<div id="informations">
-			<svg id="hexagoneLoic" class="hexagonePhoto" viewbox="0 0 150 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<svg id="hexagoneLoic" class="hexagonePhoto" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<pattern id="imgLoic" patternUnits="userSpaceOnUse" width="100" height="100">
 						<image id="imgLolo" xlink:href="img/loic.jpg" x="-25" width="150" height="100" />
@@ -22,7 +22,7 @@
 				<text font-size="10" x="50" y="52" text-anchor="middle">Loïc GERLAND</text>
 			</svg>
 						
-			<svg id="hexagoneLeo" class="hexagonePhoto right" viewbox="0 0 150 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<svg id="hexagoneLeo" class="hexagonePhoto right" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<pattern id="imgLeo" patternUnits="userSpaceOnUse" width="100" height="100">
 						<image id="imgLeoHover" xlink:href="img/leo.jpg" x="-25" width="150" height="100" />
