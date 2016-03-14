@@ -11,6 +11,7 @@
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/index.js"></script>
 
+		<link rel="icon" type="image/png" href="img/favicon.ico" />
 		<title>Accueil</title>
 	</head>
 	
