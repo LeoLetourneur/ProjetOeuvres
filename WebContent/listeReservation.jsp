@@ -36,6 +36,9 @@
 		                	</td>
 						</tr>
 					</c:forEach>
+					<c:if test="${empty reservations}">
+						<tr><td class="aucuneLigne" colspan=4>Aucune réservation</td></tr>
+					</c:if>
 				</table>
 		
 			</jsp:body>

@@ -43,6 +43,9 @@
 		                	</td>
 						</tr>
 					</c:forEach>
+					<c:if test="${empty oeuvres}">
+						<tr><td class="aucuneLigne" colspan=6>Aucune oeuvre</td></tr>
+					</c:if>
 				</table>
 		
 			</jsp:body>

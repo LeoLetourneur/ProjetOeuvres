@@ -21,7 +21,7 @@
 						<th>Ville</th>
 						<th></th>
 					</tr>
-			
+					
 					<c:forEach items="${adherents}" var="item">
 						<tr>
 							<td>${item.idAdherent}</td>
@@ -41,6 +41,9 @@
 			                </td>
 						</tr>
 					</c:forEach>
+					<c:if test="${empty adherents}">
+						<tr><td class="aucuneLigne" colspan=5>Aucun adhérent</td></tr>
+					</c:if>
 				</table>
 		
 			</jsp:body>

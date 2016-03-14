@@ -55,3 +55,8 @@ a,
 	background-color			: white;
 }
 
+.aucuneLigne {
+	text-align					: center;
+    height						: 70px;
+    line-height					: 70px !important;
+}
