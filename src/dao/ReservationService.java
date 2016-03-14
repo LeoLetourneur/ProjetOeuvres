@@ -9,8 +9,19 @@ import java.util.*;
 import metier.*;
 import persistance.*;
 
+/**
+ * Classe DAO pour les réservations
+ * 
+ * @author GERLAND - LETOURNEUR
+ */
 public class ReservationService {
 	
+	/**
+	 * Ajout d'une réservation en base de données
+	 * 
+	 * @param oeuvrePret
+	 * @throws MonException
+	 */
 	public void insertReservation(Reservation reservation)throws MonException {
 		String mysql;
 
@@ -29,6 +40,12 @@ public class ReservationService {
 		}
 	}
 	
+	/**
+	 * Modification d'une réservation en base de données
+	 * 
+	 * @param adherent
+	 * @throws MonException
+	 */
 	public void updateReservation(Reservation reservation, int oldOeuvre, int oldAdherent) throws MonException {
 		String mysql;
 
@@ -47,6 +64,12 @@ public class ReservationService {
 		}
 	}
 	
+	/**
+	 * Consulter une réservation par Id
+	 * Fabrique et renvoie un objet reservation contenant le résultat de la requète
+	 * 
+	 * @param numero integer
+	 */
 	public Reservation consulterReservation(int idOeuvreVente, int idAdherent) throws MonException {
 		String mysql = "SELECT * FROM reservation WHERE id_oeuvrevente = " + idOeuvreVente + " AND id_adherent = " + idAdherent;
 		List<Reservation> mesReservations = consulterListeReservations(mysql);
@@ -57,11 +80,23 @@ public class ReservationService {
 		}
 	}
 	
+	/**
+	 * Consulter toutes les reservations
+	 * Fabrique et renvoie les objets reservation contenant le résultat de la requète
+	 * 
+	 * @throws MonException
+	 */
 	public List<Reservation> consulterListeReservations() throws MonException {
 		String mysql = "SELECT * FROM reservation";
 		return consulterListeReservations(mysql);
 	}
 	
+	/**
+	 * Consulter les reservations par paquet
+	 * Fabrique et renvoie les objets reservation contenant le résultat de la requète
+	 * 
+	 * @throws MonException
+	 */
 	public List<Reservation> consulterListeReservations(int page, int nombreParPage) throws MonException {
 		String mysql = "SELECT * FROM reservation "+
 					   "ORDER BY id_oeuvrevente "+
@@ -69,6 +104,12 @@ public class ReservationService {
 		return consulterListeReservations(mysql);
 	}
 	
+	/**
+	 * Construire les objects Reservation en fonction de la requête passée en paramêtre
+	 * 
+	 * @param mysql String
+	 * @throws MonException
+	 */
 	private List<Reservation> consulterListeReservations(String mysql) throws MonException {
 		List<Object> rs;
 		List<Reservation> mesReservations = new ArrayList<Reservation>();
@@ -109,6 +150,12 @@ public class ReservationService {
 		}
 	}
 	
+	/**
+	 * Supprimer une reservation par Id
+	 * 
+	 * @param numero integer
+	 * @throws MonException
+	 */
 	public boolean deleteReservation(int idOeuvreVente, int idAdherent) throws MonException {
 		String mysql;
 

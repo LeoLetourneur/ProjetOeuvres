@@ -16,6 +16,11 @@ import metier.Adherent;
 import metier.Oeuvrevente;
 import metier.Reservation;
 
+/**
+ * Classe Servlet pour les réservations
+ * 
+ * @author GERLAND - LETOURNEUR
+ */
 @WebServlet("/Reservation")
 public class ReservationControleur extends parentControleur {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +32,13 @@ public class ReservationControleur extends parentControleur {
 		super();
 	}
 	
+	/**
+	 * Affichage de la liste des réservations
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayListe(HttpServletRequest request) {
 		
 		request.setAttribute("tabTitle", "Liste des réservations");
@@ -51,6 +63,13 @@ public class ReservationControleur extends parentControleur {
 		return "/"+LISTE_RESERVATION+".jsp";
 	}
 	
+	/**
+	 * Affichage du formulaire d'ajout
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayAddForm(HttpServletRequest request) {
 			
 		try {
@@ -80,6 +99,13 @@ public class ReservationControleur extends parentControleur {
 		return "/"+FORM_RESERVATION+".jsp";
 	} 
 
+	/**
+	 * Affichage du formulaire de modification
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayUpdateForm(HttpServletRequest request) {
 		
 		try {
@@ -110,6 +136,13 @@ public class ReservationControleur extends parentControleur {
 		return "/"+FORM_RESERVATION+".jsp";
 	}
 	
+	/**
+	 * Ajout ou modification d'une réservation
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String insertNewObject(HttpServletRequest request) {
 		
 		try {
@@ -162,6 +195,13 @@ public class ReservationControleur extends parentControleur {
 		return "/Reservation?action="+LISTE;
 	}
 	
+	/**
+	 * Suppression d'une réservation
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String deleteObject(HttpServletRequest request) {
 
 		try {

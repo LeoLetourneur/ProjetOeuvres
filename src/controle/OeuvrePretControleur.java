@@ -11,7 +11,9 @@ import dao.ProprietaireService;
 import meserreurs.*;
 
 /**
- * Servlet implementation class Controleur
+ * Classe Servlet pour les oeuvres pret
+ * 
+ * @author GERLAND - LETOURNEUR
  */
 @WebServlet("/OeuvrePret")
 public class OeuvrePretControleur extends parentControleur {
@@ -24,6 +26,13 @@ public class OeuvrePretControleur extends parentControleur {
 		super();
 	}
 
+	/**
+	 * Affichage de la liste des oeuvres
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayListe(HttpServletRequest request) {
 			
 		request.setAttribute("tabTitle", "Liste des prêts");
@@ -48,6 +57,13 @@ public class OeuvrePretControleur extends parentControleur {
 		return "/"+LISTE_OEUVREPRET+".jsp";
 	}
 	
+	/**
+	 * Affichage du formulaire d'ajout
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayAddForm(HttpServletRequest request) {
 		
 		try {
@@ -65,6 +81,13 @@ public class OeuvrePretControleur extends parentControleur {
 		return "/" + FORM_OEUVREPRET + ".jsp";
 	} 
 
+	/**
+	 * Affichage du formulaire de modification
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayUpdateForm(HttpServletRequest request) {
 		
 		try {
@@ -85,6 +108,13 @@ public class OeuvrePretControleur extends parentControleur {
 		return "/" + FORM_OEUVREPRET + ".jsp";
 	}
 	
+	/**
+	 * Ajout ou modification d'une oeuvre
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String insertNewObject(HttpServletRequest request) {
 		
 		try {
@@ -119,6 +149,13 @@ public class OeuvrePretControleur extends parentControleur {
 		return "/OeuvrePret?action="+LISTE;
 	}
 	
+	/**
+	 * Suppression d'une oeuvre
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String deleteObject(HttpServletRequest request) {
 
 		try {

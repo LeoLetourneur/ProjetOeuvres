@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Classe Servlet générique
+ * 
+ * @author GERLAND - LETOURNEUR
+ */
 public abstract class parentControleur extends HttpServlet {
 	protected static final long serialVersionUID = 1L;
 	protected static final String ACTION_TYPE = "action";
@@ -50,6 +55,12 @@ public abstract class parentControleur extends HttpServlet {
 		processusTraiteRequete(request, response);
 	}
 	
+	/**
+	 * @param request
+	 * @param response
+	 * 
+	 * Appelle de la fonction en fonction de l'action appellée
+	 */
 	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -108,12 +119,16 @@ public abstract class parentControleur extends HttpServlet {
 	}
 	
 	protected abstract String displayListe(HttpServletRequest request);
+	
 	protected abstract String displayAddForm(HttpServletRequest request);
+	
 	protected abstract String displayUpdateForm(HttpServletRequest request);
+	
 	protected abstract String insertNewObject(HttpServletRequest request);
+	
 	protected abstract String deleteObject(HttpServletRequest request);
 	
-	/*
+	/**
 	 * Dans le cas où l'utilisateur affiche plus d'élément par page
 	 * il faut vérifier que le numéro de la page actuel est toujours disponible
 	 * sinon on retourne à la page 1

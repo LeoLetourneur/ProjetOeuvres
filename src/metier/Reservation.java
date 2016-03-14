@@ -16,10 +16,7 @@ public class Reservation implements Serializable {
 	private Oeuvrevente oeuvrevente;
 	private String statut; 
 
-	public Reservation() {
-	}
-
-
+	public Reservation() {}
 
 	public Reservation(Date date, Adherent adherent, Oeuvrevente oeuvrevente, String statut) {
 		super();

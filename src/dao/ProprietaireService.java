@@ -6,6 +6,11 @@ import java.util.*;
 import metier.*;
 import persistance.*;
 
+/**
+ * Classe DAO pour les propriétaires
+ * 
+ * @author GERLAND - LETOURNEUR
+ */
 public class ProprietaireService {
 	
 	/**

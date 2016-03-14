@@ -6,8 +6,19 @@ import java.util.*;
 import metier.*;
 import persistance.*;
 
+/**
+ * Classe DAO pour les oeuvres pret
+ * 
+ * @author GERLAND - LETOURNEUR
+ */
 public class OeuvrePretService {
 
+	/**
+	 * Ajout d'une oeuvre en base de données
+	 * 
+	 * @param oeuvrePret
+	 * @throws MonException
+	 */
 	public void insertOeuvrePret(Oeuvrepret oeuvrePret)throws MonException {
 		String mysql;
 
@@ -24,6 +35,12 @@ public class OeuvrePretService {
 		}
 	}
 	
+	/**
+	 * Modification d'une oeuvre en base de données
+	 * 
+	 * @param adherent
+	 * @throws MonException
+	 */
 	public void updateOeuvrePret(Oeuvrepret oeuvrePret) throws MonException {
 		String mysql;
 
@@ -40,6 +57,12 @@ public class OeuvrePretService {
 		}
 	}
 	
+	/**
+	 * Consulter une oeuvre par Id
+	 * Fabrique et renvoie un objet oeuvrepret contenant le résultat de la requète
+	 * 
+	 * @param numero integer
+	 */
 	public Oeuvrepret consulterOeuvrePret(int numero) throws MonException {
 		String mysql = "SELECT * FROM oeuvrepret WHERE id_oeuvrepret = " + numero;
 		List<Oeuvrepret> mesOeuvresPret = consulterListeOeuvresPret(mysql);
@@ -50,11 +73,23 @@ public class OeuvrePretService {
 		}
 	}
 	
+	/**
+	 * Consulter toutes les oeuvres
+	 * Fabrique et renvoie les objets oeuvrepret contenant le résultat de la requète
+	 * 
+	 * @throws MonException
+	 */
 	public List<Oeuvrepret> consulterListeOeuvresPret() throws MonException {
 		String mysql = "SELECT * FROM oeuvrepret";
 		return consulterListeOeuvresPret(mysql);
 	}
 	
+	/**
+	 * Consulter les oeuvres par paquet
+	 * Fabrique et renvoie les objets oeuvrepret contenant le résultat de la requète
+	 * 
+	 * @throws MonException
+	 */
 	public List<Oeuvrepret> consulterListeOeuvresPret(int page, int nombreParPage) throws MonException {
 		String mysql = "SELECT * FROM oeuvrepret "+
 					   "ORDER BY id_oeuvrepret "+
@@ -62,6 +97,12 @@ public class OeuvrePretService {
 		return consulterListeOeuvresPret(mysql);
 	}
 	
+	/**
+	 * Construire les objects OeuvrePret en fonction de la requête passée en paramêtre
+	 * 
+	 * @param mysql String
+	 * @throws MonException
+	 */
 	private List<Oeuvrepret> consulterListeOeuvresPret(String mysql) throws MonException {
 		List<Object> rs;
 		List<Oeuvrepret> mesOeuvresPret = new ArrayList<Oeuvrepret>();
@@ -90,6 +131,12 @@ public class OeuvrePretService {
 		}
 	}
 	
+	/**
+	 * Supprimer une oeuvre par Id
+	 * 
+	 * @param numero integer
+	 * @throws MonException
+	 */
 	public boolean deleteOeuvrePret(int id) throws MonException {
 		String mysql;
 

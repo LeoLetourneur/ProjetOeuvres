@@ -20,8 +20,8 @@ public class Connexion {
 		return instance;
 	}
 
-	// on rend le constructeur privé
-	// pour empêcher toute création d'instance
+	// on rend le constructeur privÃ©
+	// pour empÃªcher toute crÃ©ation d'instance
 	private Connexion() {
 	}
 
@@ -29,7 +29,7 @@ public class Connexion {
 		Connection conn = null;
 		try {
 			Context ctxt = new InitialContext();
-			// On récupère l'environnement
+			// On rÃ©cupÃ¨re l'environnement
 			Context envCtx = (Context) ctxt.lookup("java:comp/env");
 			// On recherche la data source
 			DataSource ds = (DataSource) envCtx.lookup("jdbc/DSOeuvre");

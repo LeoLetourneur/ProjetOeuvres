@@ -10,7 +10,9 @@ import dao.AdherentService;
 import meserreurs.*;
 
 /**
- * Servlet implementation class Controleur
+ * Classe Servlet pour les adhérents
+ * 
+ * @author GERLAND - LETOURNEUR
  */
 @WebServlet("/Adherent")
 public class AdherentControleur extends parentControleur {
@@ -23,6 +25,13 @@ public class AdherentControleur extends parentControleur {
 		super();
 	}
 
+	/**
+	 * Affichage de la liste d'adhérents
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayListe(HttpServletRequest request) {
 		
 		request.setAttribute("tabTitle", "Liste des adhérents");
@@ -47,6 +56,13 @@ public class AdherentControleur extends parentControleur {
 		return "/"+LISTE_ADHERENT+".jsp";
 	}
 	
+	/**
+	 * Affichage du formulaire d'ajout
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayAddForm(HttpServletRequest request) {
 			
 		request.setAttribute("tabTitle", "Nouvel adhérent");
@@ -54,6 +70,13 @@ public class AdherentControleur extends parentControleur {
 		return "/"+FORM_ADHERENT+".jsp";
 	} 
 
+	/**
+	 * Affichage du formulaire de modification
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String displayUpdateForm(HttpServletRequest request) {
 		
 		try {
@@ -70,6 +93,13 @@ public class AdherentControleur extends parentControleur {
 		return "/"+FORM_ADHERENT+".jsp";
 	}
 	
+	/**
+	 * Ajout ou modification d'un adhérent
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String insertNewObject(HttpServletRequest request) {
 		
 		try {
@@ -104,6 +134,13 @@ public class AdherentControleur extends parentControleur {
 		return "/Adherent?action="+LISTE;
 	}
 	
+	/**
+	 * Suppression d'un adhérent
+	 * 
+	 * @param HttpServletRequest request
+	 * @return String Page à afficher
+	 * @see controle.parentControleur#displayListe(javax.servlet.http.HttpServletRequest)
+	 */
 	protected String deleteObject(HttpServletRequest request) {
 
 		try {
